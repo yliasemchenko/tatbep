@@ -8,7 +8,7 @@ import AboutTeam from '../components/sections/about/AboutTeam'
 function About() {
   return (
     <>
-      {/* <AboutMain /> */}
+      <AboutMain />
       <AboutTerms />
       <AboutPrinciples />
       <AboutHistory />

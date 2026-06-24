@@ -7,10 +7,7 @@ import 'swiper/css/pagination'
 const arrowRightIcon = '/assets/img/icons/arrow_right.svg'
 
 const teamImages = [
-  '/wp-content/uploads/2023/12/Images.png',
-  '/wp-content/uploads/2024/01/rectangle-204-2.png',
-  '/wp-content/uploads/2024/01/rectangle-204.png',
-  '/wp-content/uploads/2024/01/6a7ad54fc918686e67478929eb980920-1.jpg'
+  'assets/img/team.JPG'
 ]
 
 function AboutTeam() {

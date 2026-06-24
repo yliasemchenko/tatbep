@@ -1737,6 +1737,9 @@ form .btn_main.btn_main_blue:hover{
     margin-left:-40px;
     line-height:1
 }
+#about_terms{
+    overflow-x:hidden
+}
 .terms_row{
     margin-top:100px;
     width:100%
@@ -1816,7 +1819,8 @@ form .btn_main.btn_main_blue:hover{
 .terms_div{
     position:absolute;
     top:0;
-    left:0
+    left:0;
+    transition: transform 0.5s ease;
 }
 .terms_div.terms_div_two{
     left:90px
@@ -1836,7 +1840,7 @@ form .btn_main.btn_main_blue:hover{
     background:var(--blue_1)
 }
 .terms_div_three .terms_left p{
-    margin-top:410px;
+    margin-top:270px;
     white-space:nowrap
 }
 .terms_div.terms_div_four{
@@ -3965,4 +3969,40 @@ section.section_padding_top{
     outline: none;
     box-shadow: none;
     border: none;
+}
+
+
+.terms_row {
+    position: relative;
+    height: 600px;
+}
+
+.terms_div {
+  position: absolute;
+  top: 0;
+  transition: all 0.5s ease;
+}
+
+/* Тело по умолчанию скрыто */
+.terms_body {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.4s ease;
+}
+
+/* Активное тело */
+.terms_body_active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Заголовки */
+.terms_left {
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+/* Активный заголовок */
+.terms_left_active {
+  font-weight: 700;
 }

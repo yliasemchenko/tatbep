@@ -9,25 +9,22 @@ const terms = [
     id: 'one',
     title: 'Экологичность',
     image: '/assets/img/about/terms/1.webp',
-    description: 'Предлагаем к внедрению на энергообъектах современные мировые экологические и энергоэффективные решения'
+    description:
+      'Предлагаем к внедрению на энергообъектах современные мировые экологические и энергоэффективные решения'
   },
   {
     id: 'two',
     title: 'Инновационность',
     image: '/assets/img/about/terms/2.webp',
-    description: 'Разрабатываем и внедряем собственные инновационные решения для экологизации промышленной и большой энергетики'
+    description:
+      'Разрабатываем и внедряем собственные инновационные решения для экологизации промышленной и большой энергетики'
   },
   {
     id: 'three',
-    title: 'Своя инженерная школа',
-    image: '/assets/img/about/terms/3.webp',
-    description: 'Придерживаемся базовых принципов честности и максимальной пользы для заказчика и конечного потребителя'
-  },
-  {
-    id: 'four',
     title: 'Профессионализм',
-    image: '/assets/img/about/terms/4.webp',
-    description: 'Используем компетенции и экспертность в большой энергетике для повышения эффективности работы энергообъектов промышленных и целлюлозно-бумажных предприятий'
+    image: '/assets/img/about/terms/3.webp',
+    description:
+      'Используем компетенции и экспертность в большой энергетике для повышения эффективности работы энергообъектов промышленных и целлюлозно-бумажных предприятий'
   }
 ]
 
@@ -37,29 +34,45 @@ function AboutTerms() {
   return (
     <section id="about_terms">
       <div className="container">
-        <div className="about_terms_top">
-          <h2 className="big">Татбелэнергопроект — это</h2>
-          <p>надёжная, работоспособная, устойчивая, востребованная команда единомышленников, стремящаяся к новому и даже возглавляющая перемены в энергетической отрасли</p>
-        </div>
+
+        {/* ===== DESKTOP ===== */}
         <div className="terms_row">
-          {terms.map((term, index) => (
-            <div
-              key={term.id}
-              className={`terms_div terms_div_${term.id} ${activeTerm === term.id ? 'terms_div_active' : ''}`}
-              onMouseEnter={() => setActiveTerm(term.id)}
-            >
-              <div className="terms_body">
-                <div className="terms_body_img">
-                  <img src={term.image} alt={term.title} />
+          {terms.map((term, index) => {
+            const isActive = activeTerm === term.id
+
+            return (
+              <div
+                key={term.id}
+                className={`terms_div terms_div_${term.id}`}
+                style={{
+                  zIndex: isActive ? 30 : 10 - index
+                }}
+                onMouseEnter={() => setActiveTerm(term.id)}
+              >
+                <div
+                  className={`terms_body ${
+                    isActive ? 'terms_body_active' : ''
+                  }`}
+                >
+                  <div className="terms_body_img">
+                    <img src={term.image} alt={term.title} />
+                  </div>
+                  <p>{term.description}</p>
                 </div>
-                <p>{term.description}</p>
+
+                <div
+                  className={`terms_left ${
+                    isActive ? 'terms_left_active' : ''
+                  }`}
+                >
+                  <p>{term.title}</p>
+                </div>
               </div>
-              <div className={`terms_left terms_left_${term.id} ${activeTerm === term.id ? 'terms_left_active' : ''} ${term.id === 'four' ? 'terms_left_disable' : ''}`}>
-                <p>{term.title}</p>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
+
+        {/* ===== MOBILE ===== */}
         <div className="terms_mobile">
           <Swiper
             modules={[Navigation]}
@@ -83,11 +96,13 @@ function AboutTerms() {
               </SwiperSlide>
             ))}
           </Swiper>
+
           <div className="swiper-navigation">
             <div className="swiper-button-prev swiper-button-prev-terms"></div>
             <div className="swiper-button-next swiper-button-next-terms"></div>
           </div>
         </div>
+
       </div>
     </section>
   )

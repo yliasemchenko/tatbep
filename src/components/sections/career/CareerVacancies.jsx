@@ -84,7 +84,7 @@ function CareerVacancies() {
         </div>
       </section>
 
-      <section>
+      {/* <section>
         <div className="container">
           <div className="zayavka_big_plashka zayavka_big_plashka_career">
             <div className="row">
@@ -123,7 +123,7 @@ function CareerVacancies() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   )
 }

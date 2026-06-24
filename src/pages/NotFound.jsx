@@ -1,9 +1,13 @@
 function NotFound() {
   return (
-    <div style={{ padding: '50px', textAlign: 'center' }}>
-      <h1>404</h1>
-      <p>Страница не найдена</p>
-    </div>
+    <section className="section_padding_top">
+      <div className="container">
+        <div className="not_found" style={{ textAlign: 'center'}}>
+          <h1>404</h1>
+          <p>Страница в разработке</p>
+        </div>
+      </div>
+    </section>
   )
 }
 

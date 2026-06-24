@@ -19,7 +19,7 @@ const projectCards = [
   {
     title: 'Отзывы',
     image: '/assets/img/projects/main/3.png',
-    link: '/proekty/otzyvy',
+    link: '/not-found',
     className: 'press_div_img_gray',
     textClassName: 'press_div_text_gray',
 

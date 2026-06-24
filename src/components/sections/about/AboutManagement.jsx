@@ -8,57 +8,45 @@ const arrowRightIcon = '/assets/img/icons/arrow_right.svg'
 
 const management = [
   {
-    name: 'Дмитрий Феликсович Серант',
-    position: 'Генеральный директор',
-    image: '/wp-content/uploads/2024/01/image-25-2.png',
+    name: 'Виктор Яковлевич Гладышев',
+    position: 'Директор',
+    image: 'assets/img/avatar_no.webp',
     link: '#'
   },
   {
-    name: 'Сергей Николаевич Кучанов',
-    position: 'Технический директор',
-    image: '/wp-content/uploads/2024/01/image-21.png',
+    name: 'Иван Иванович Врублевский',
+    position: 'Главный инженер',
+    image: 'assets/img/avatar_no.webp',
     link: '#'
   },
   {
-    name: 'Анатолий Александрович Ловцов',
-    position: 'Заместитель генерального директора по проектированию',
-    image: '/wp-content/uploads/2024/01/image-20.png',
+    name: 'Александр Владимирович Антосюк',
+    position: 'Заместителем директора по производству',
+    image: 'assets/img/avatar_no.webp',
     link: '#'
   },
   {
-    name: 'Алексей Дмитриевич Колегов',
-    position: 'Директор по внедрению инновационных технологий',
-    image: '/wp-content/uploads/2024/01/image-22.png',
+    name: 'Леонид Юрьевич Кулебякин',
+    position: 'Первый заместитель директора',
+    image: 'assets/img/avatar_no.webp',
     link: '#'
   },
   {
-    name: 'Дмитрий Сергеевич Россов',
-    position: 'Директор по производству',
-    image: '/wp-content/uploads/2023/12/dsc_7296_1.png',
-    link: '#'
-  },
-  {
-    name: 'Наталия Валерьевна Палкина',
-    position: 'Директор по корпоративной стратегии и правовому обеспечению',
-    image: '/wp-content/uploads/2024/01/image-23.png',
-    link: '#'
-  },
-  {
-    name: 'Владимир Олегович Третьяков',
-    position: 'Директор по информационным технологиям',
-    image: '/wp-content/uploads/2024/01/image-19.png',
-    link: '#'
-  },
-  {
-    name: 'Павел Михайлович Дудин',
-    position: 'Начальник отдела управления проектами',
-    image: '/wp-content/uploads/2024/01/image-18.png',
-    link: '#'
-  },
-  {
-    name: 'Наталья Николаевна Толстых',
+    name: 'Наталья Николаевна Отческая',
     position: 'Главный бухгалтер',
-    image: '/wp-content/uploads/2024/01/image-17.png',
+    image: 'assets/img/avatar_no.webp',
+    link: '#'
+  },
+  {
+    name: 'Светлана Ивановна Володько',
+    position: 'Начальник отдела кадров',
+    image: 'assets/img/avatar_no.webp',
+    link: '#'
+  },
+  {
+    name: 'Ольга Сергеевна Астапова',
+    position: 'Cекретарь',
+    image: 'assets/img/avatar_no.webp',
     link: '#'
   }
 ]
