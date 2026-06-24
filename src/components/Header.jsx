@@ -3,10 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 // Images from public folder
 const logoImg = '/assets/img/ker_gr.png'
 const searchIcon = '/assets/img/icons/search.svg'
-const ytIcon = '/assets/img/icons/yt.svg'
-const tgIcon = '/assets/img/icons/tg.svg'
 const searchBlackIcon = '/assets/img/icons/search_black.svg'
-const arrowDownIcon = '/assets/img/icons/arrow_down.svg'
 
 function Header() {
   const location = useLocation()
@@ -42,37 +39,15 @@ function Header() {
 
   return (
     <>
-      <header className={isScrolled ? 'black' : ''} style={isScrolled ? { backgroundColor: '#fff' } : {}}>
+      <header>
         <div className="navbar_row">
-          <div className="navbar_top">
+          <div className="navbar_end navbar_single">
             <div className="container">
-              <div className="navbar_top_start">
-                <div className="navbar_top_logo">
-                  <Link to="/" className="logo">
-                    <img src={logoImg} alt="Татбелэнергопроект" />
-                  </Link>
-                </div>
+              <div className="navbar_top_logo">
+                <Link to="/" className="logo">
+                  <img src={logoImg} alt="Татбелэнергопроект" />
+                </Link>
               </div>
-              <div className="navbar_top_end">
-                <div className="navbar_top_end_a">
-                  <a href="mailto:info@tatbep.by">info@tatbep.by</a>
-                  <a href="tel:+37517308-26-01">+375 17 308-26-01</a>
-                </div>
-                <span></span>
-                <div className="navbar_top_end_img">
-                  <a href="https://www.youtube.com/@tatbep" target="_blank" rel="nofollow">
-                    <img src={ytIcon} alt="YouTube" />
-                  </a>
-                  <a href="https://t.me/tatbep" target="_blank" rel="nofollow">
-                    <img src={tgIcon} alt="Telegram" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="navbar_end">
-            <div className="container">
-              <p className="navbar_end_p">Мы создаем экологичную<br /> энергетику будущего</p>
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link className="nav-link" to="/">Главная</Link>
@@ -87,10 +62,7 @@ function Header() {
                   <Link className="nav-link" to="/proekty">Проекты</Link>
                 </li>
                 <li className="nav-item dropdown">
-                  <Link className="nav-link dropdown-toggle" to="/karera">Карьера</Link>
-                  <ul className="dropdown-menu">
-                    <li><Link className="dropdown-item" to="/karera/vakansii">Вакансии</Link></li>
-                  </ul>
+                  <Link className="nav-link" to="/karera">Карьера</Link>
                 </li>
                 <li className="nav-item dropdown">
                   <Link className="nav-link" to="/news">Новости</Link>
@@ -99,12 +71,18 @@ function Header() {
                   <Link className="nav-link" to="/contacts">Контакты</Link>
                 </li>
               </ul>
-              <img 
-                onClick={toggleSearchModal}
-                src={searchIcon} 
-                alt="Поиск" 
-                style={{ cursor: 'pointer' }}
-              />
+              <div className="navbar_actions">
+                <div className="navbar_contacts">
+                  <a href="mailto:info@tatbep.by">info@tatbep.by</a>
+                  <a href="tel:+37517308-26-01">+375 17 308-26-01</a>
+                </div>
+                <img
+                  onClick={toggleSearchModal}
+                  src={searchIcon}
+                  alt="Поиск"
+                  style={{ cursor: 'pointer' }}
+                />
+              </div>
             </div>
           </div>
         </div>

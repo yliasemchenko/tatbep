@@ -138,12 +138,8 @@
   .navbar_end_p {
     display: none;
   }
-  .navbar_top_a a {
-    font-size: 10px;
-  }
-  .navbar_top_a,
-  .navbar_top_end {
-    gap: 15px;
+  .navbar_contacts {
+    display: none;
   }
   .number_div_text {
     overflow: hidden;
@@ -521,6 +517,8 @@
     flex-grow: 1;
     flex-shrink: 1;
   }
+  .history_about_div .history_about_media,
+  .history_about_div .history_about_text,
   .history_about_div .col-lg-4,
   .history_about_div .col-lg-6,
   .news_post_body .col-lg-4,
@@ -653,6 +651,30 @@
     font-weight: 600;
     margin-top: 40px;
   }
+  .mobile_header {
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(14, 22, 34, 0.08);
+  }
+  .burger {
+    background: #1a2a3a;
+  }
+  .mobile_header_secret {
+    top: 70px;
+  }
+  .footer_mobile_div a,
+  .footer_mobile_p {
+    color: #e9eff6;
+  }
+  .footer_mobile {
+    background: #0f1a26;
+  }
+  .footer_mobile_row {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer_mobile_div {
+    min-width: 140px;
+  }
   footer {
     padding: 40px 0;
   }
@@ -681,6 +703,36 @@
   .terms_row {
     margin-top: 30px;
     display: none;
+  }
+  .about_terms_cards {
+    margin-top: 30px;
+    gap: 20px;
+  }
+  .about_terms_cards_row_top {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .about_terms_card_img {
+    height: 220px;
+  }
+  .about_terms_card_body {
+    padding: 24px;
+  }
+  .about_terms_card_body h3 {
+    font-size: 20px;
+  }
+  .about_terms_card_body p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .about_terms_card_wide {
+    grid-template-columns: 1fr;
+  }
+  .about_terms_card_wide .about_terms_card_img {
+    min-height: 220px;
+  }
+  .about_terms_card_wide .about_terms_card_body {
+    padding: 24px;
   }
   .terms_mobile_div {
     height: 480px;
@@ -758,6 +810,10 @@
     align-items: start;
     justify-content: start;
     margin-top: 30px;
+    min-height: auto;
+  }
+  .history_about_text {
+    align-items: start;
   }
   .btn_history_center,
   .team_btn_width {
@@ -765,9 +821,12 @@
     align-items: center;
     width: 100%;
   }
-  .history_about_div iframe {
+  .history_about_div iframe,
+  .history_about_img {
     width: 100%;
-    height: 340px;
+  }
+  .history_about_img {
+    height: 280px;
   }
   #rukovodstvo .col-lg-3 {
     width: 32%;
@@ -791,6 +850,27 @@
   .slider_career_img,
   .team_img {
     height: 400px;
+  }
+  .about_departments_slider {
+    padding: 0 48px;
+  }
+  .about_departments_card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .about_departments_card_img {
+    min-height: 280px;
+  }
+  .about_departments_card_body {
+    padding: 28px 24px 32px;
+  }
+  .about_departments_card_body h3 {
+    font-size: 22px;
+  }
+  .about_departments_head,
+  .about_departments_text {
+    font-size: 14px;
+    line-height: 22px;
   }
   .swiper_history_bottom .swiper-navigation {
     z-index: 10;
@@ -1215,6 +1295,10 @@
   .for_who_button {
     font-size: 14px;
     height: 56px;
+  }
+  .for_who_row {
+    min-height: 240px;
+    height: auto;
   }
   .for_who_img,
   .history_about_div iframe,
@@ -1647,6 +1731,9 @@
   #map {
     max-height: 540px;
   }
+  .projects_geo_map {
+    max-height: 540px;
+  }
   .swiper_history_bottom .swiper-button-next,
   .swiper_history_bottom .swiper-button-prev {
     height: 30px;
@@ -1667,10 +1754,10 @@
     text-align: center;
   }
   .history_year {
-    font-size: 12px;
-    line-height: 15px;
-    padding: 8px 13px;
-    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1;
+    padding: 14px 16px;
+    border-radius: 8px;
   }
   .swiper_history_bottom .swiper-button-prev {
     left: 0;

@@ -5,10 +5,11 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import NumbersSection from '../components/sections/NumbersSection'
 import ProjectsSection from '../components/sections/ProjectsSection'
+import ProjectsGeoSection from '../components/sections/ProjectsGeoSection'
 import NewsSection from '../components/sections/NewsSection'
 import CurrentProjectsSection from '../components/sections/CurrentProjectsSection'
 import ClientsSection from '../components/sections/ClientsSection'
-import ObjectsSection from '../components/sections/ObjectsSection'
+import TraditionsSection from '../components/sections/TraditionsSection'
 
 function Home() {
 
@@ -90,8 +91,9 @@ function Home() {
       <ProjectsSection />
       <NewsSection />
       <CurrentProjectsSection />
+      <ProjectsGeoSection />
       <ClientsSection />
-      <ObjectsSection />
+      <TraditionsSection />
     </>
   )
 }

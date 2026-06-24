@@ -143,7 +143,7 @@ const benefits = [
   }
 ]
 
-const traditions = [
+export const traditions = [
   {
     id: 1,
     title: 'Веселиться на корпоративах',

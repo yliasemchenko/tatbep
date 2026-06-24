@@ -117,10 +117,6 @@ function NewsSection() {
             </div>
           </div>
         </div>
-        <div className="news_end_row">
-          <Link to="/press-center/news">все новости</Link>
-          <Link to="/contacts">связаться с пресс-службой</Link>
-        </div>
       </div>
     </section>
   )

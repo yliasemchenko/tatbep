@@ -1,9 +1,3 @@
-import { useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-
 const terms = [
   {
     id: 'one',
@@ -29,80 +23,43 @@ const terms = [
 ]
 
 function AboutTerms() {
-  const [activeTerm, setActiveTerm] = useState('one')
+  const [first, second, third] = terms
 
   return (
     <section id="about_terms">
       <div className="container">
-
-        {/* ===== DESKTOP ===== */}
-        <div className="terms_row">
-          {terms.map((term, index) => {
-            const isActive = activeTerm === term.id
-
-            return (
-              <div
+        <h2 className="big">
+          <p>КТО МЫ </p>
+            
+        </h2>
+        <div className="about_terms_cards">
+          <div className="about_terms_cards_row about_terms_cards_row_top">
+            {[first, second].map((term) => (
+              <article
                 key={term.id}
-                className={`terms_div terms_div_${term.id}`}
-                style={{
-                  zIndex: isActive ? 30 : 10 - index
-                }}
-                onMouseEnter={() => setActiveTerm(term.id)}
+                className={`about_terms_card about_terms_card_${term.id}`}
               >
-                <div
-                  className={`terms_body ${
-                    isActive ? 'terms_body_active' : ''
-                  }`}
-                >
-                  <div className="terms_body_img">
-                    <img src={term.image} alt={term.title} />
-                  </div>
-                  <p>{term.description}</p>
+                <div className="about_terms_card_img">
+                  <img src={term.image} alt={term.title} />
                 </div>
-
-                <div
-                  className={`terms_left ${
-                    isActive ? 'terms_left_active' : ''
-                  }`}
-                >
-                  <p>{term.title}</p>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* ===== MOBILE ===== */}
-        <div className="terms_mobile">
-          <Swiper
-            modules={[Navigation]}
-            spaceBetween={20}
-            slidesPerView={1}
-            navigation={{
-              prevEl: '.swiper-button-prev-terms',
-              nextEl: '.swiper-button-next-terms'
-            }}
-            className="swiper swiper_terms"
-          >
-            {terms.map((term) => (
-              <SwiperSlide key={term.id}>
-                <div className={`terms_mobile_div terms_mobile_div_${term.id}`}>
+                <div className="about_terms_card_body">
                   <h3>{term.title}</h3>
-                  <div className="terms_mobile_div_img">
-                    <img src={term.image} alt={term.title} />
-                  </div>
                   <p>{term.description}</p>
                 </div>
-              </SwiperSlide>
+              </article>
             ))}
-          </Swiper>
-
-          <div className="swiper-navigation">
-            <div className="swiper-button-prev swiper-button-prev-terms"></div>
-            <div className="swiper-button-next swiper-button-next-terms"></div>
           </div>
-        </div>
 
+          <article className={`about_terms_card about_terms_card_${third.id} about_terms_card_wide`}>
+            <div className="about_terms_card_img">
+              <img src={third.image} alt={third.title} />
+            </div>
+            <div className="about_terms_card_body">
+              <h3>{third.title}</h3>
+              <p>{third.description}</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
   )
