@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import L from 'leaflet'
+import L from '@/utils/leafletSetup'
 import 'leaflet/dist/leaflet.css'
 import { projectsGeoData } from './projects/ProjectsGeo'
 

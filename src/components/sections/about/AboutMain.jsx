@@ -16,7 +16,7 @@ function AboutMain() {
         </div>
       </div>
       <div className="about_main_bg">
-        <img src="/assets/video/about_page.gif" alt="" />
+        <img src="/assets/img/team.JPG" alt="" />
       </div>
       <a href="#about_terms" className="abs_arrow">
         <img src={arrowDownIcon} alt="" />

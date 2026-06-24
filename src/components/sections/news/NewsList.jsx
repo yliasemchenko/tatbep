@@ -11,7 +11,7 @@ const mockNewsData = [
     themes: ['Энергетика', 'Татбелэнергопроект'],
     title: 'Специалисты Татбелэнергопроект изучили работу Новосибирской ТЭЦ-4 изнутри',
     description: '25-26 июня сотрудники ООО «Татбелэнергопроект» побывали на закрытой экскурсии по Новосибирской ТЭЦ-4, организованной специально для компании.',
-    image: '/wp-content/uploads/2025/06/novosibirsk-chp-4-visit_3.jpg',
+    image: '/assets/img/press_center/1.jpg',
     link: '/press-center/news/novosibirsk-chp-4',
     isBig: true
   },
@@ -20,7 +20,7 @@ const mockNewsData = [
     date: '16.07.2025',
     themes: ['Энергетика', 'Татбелэнергопроект'],
     title: 'Татбелэнергопроект обсудил развитие угольной генерации на научно-техническом совете ЕЭС',
-    image: '/wp-content/uploads/2025/07/2025-07-nts2.png',
+    image: '/assets/img/press_center/2.jpg',
     link: '/press-center/news/nts2',
     isBig: true
   },
@@ -29,7 +29,7 @@ const mockNewsData = [
     date: '09.07.2025',
     themes: ['ЦБП', 'Промышленность', 'Энергетика', 'Татбелэнергопроект'],
     title: 'Татбелэнергопроект провел переговоры с турецкой компанией SINTEK',
-    image: '/wp-content/uploads/2025/07/sintek1.jpg',
+    image: '/assets/img/press_center/3.jpg',
     link: '/press-center/news/sintek',
     isBig: true
   },
@@ -38,7 +38,7 @@ const mockNewsData = [
     date: '07.07.2025',
     themes: ['Татбелэнергопроект'],
     title: 'Татбелэнергопроект развивает внутреннюю структуру: сессия Аркадия Цукера',
-    image: '/wp-content/uploads/2025/07/zuker3.jpg',
+    image: '/assets/img/press_center/1.jpg',
     link: '/press-center/news/zuker'
   },
   {
@@ -46,7 +46,7 @@ const mockNewsData = [
     date: '27.06.2025',
     themes: ['Татбелэнергопроект'],
     title: 'Татбелэнергопроект стал соорганизатором дуатлона памяти Максима Серанта',
-    image: '/wp-content/uploads/2025/06/2025-duatlon_3.jpg',
+    image: '/assets/img/press_center/2.jpg',
     link: '/press-center/news/duatlon'
   },
   {
@@ -54,7 +54,7 @@ const mockNewsData = [
     date: '20.06.2025',
     themes: ['Энергетика'],
     title: 'Новая разработка в области энергетики',
-    image: '/wp-content/uploads/2025/06/chpp4-news.jpg',
+    image: '/assets/img/press_center/3.jpg',
     link: '/press-center/news/new-development'
   },
   {
@@ -62,7 +62,7 @@ const mockNewsData = [
     date: '15.06.2025',
     themes: ['Промышленность', 'Татбелэнергопроект'],
     title: 'Расширение производственных мощностей',
-    image: '/wp-content/uploads/2025/06/chpp4-news.jpg',
+    image: '/assets/img/press_center/3.jpg',
     link: '/press-center/news/expansion'
   },
   {
@@ -70,7 +70,7 @@ const mockNewsData = [
     date: '10.06.2025',
     themes: ['ЦБП'],
     title: 'Новые проекты в целлюлозно-бумажной промышленности',
-    image: '/wp-content/uploads/2025/06/chpp4-news.jpg',
+    image: '/assets/img/press_center/3.jpg',
     link: '/press-center/news/cbp-projects'
   },
   {
@@ -78,7 +78,7 @@ const mockNewsData = [
     date: '05.06.2025',
     themes: ['Энергетика', 'Татбелэнергопроект'],
     title: 'Инновационные решения для энергетики',
-    image: '/wp-content/uploads/2025/06/chpp4-news.jpg',
+    image: '/assets/img/press_center/3.jpg',
     link: '/press-center/news/innovations'
   },
   {
@@ -86,7 +86,7 @@ const mockNewsData = [
     date: '01.06.2025',
     themes: ['Татбелэнергопроект'],
     title: 'Встреча с партнерами компании',
-    image: '/wp-content/uploads/2025/06/chpp4-news.jpg',
+    image: '/assets/img/press_center/3.jpg',
     link: '/press-center/news/partners'
   },
   {
@@ -94,7 +94,7 @@ const mockNewsData = [
     date: '28.05.2025',
     themes: ['Промышленность'],
     title: 'Новые технологии в промышленности',
-    image: '/wp-content/uploads/2025/06/chpp4-news.jpg',
+    image: '/assets/img/press_center/3.jpg',
     link: '/press-center/news/industrial-tech'
   },
   {
@@ -102,7 +102,7 @@ const mockNewsData = [
     date: '25.05.2025',
     themes: ['Энергетика', 'ЦБП'],
     title: 'Совместные проекты с целлюлозно-бумажными предприятиями',
-    image: '/wp-content/uploads/2025/06/chpp4-news.jpg',
+    image: '/assets/img/press_center/3.jpg',
     link: '/press-center/news/joint-projects'
   }
 ]

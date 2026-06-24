@@ -11,14 +11,14 @@ const vacancies = [
     id: 1,
     title: 'Инженер-конструктор (начинающий специалист)',
     description: 'Ищем специалиста для проработки технологических схем, узлов, построения 3D моделей, выполнения тепловых, аэродинамических, гидравлических и прочностных расчетов и многое другое.',
-    icon: 'assets/img/icons/career/engineer-1.svg',
+    icon: '/assets/img/icons/career/engineer-1.svg',
     link: '#'
   },
   {
     id: 2,
     title: 'Ведущий инженер / Главный специалист конструкторского отдела',
     description: 'Ищем в команду инженера-конструктора с опытом выполнения теплотехнических расчетов котельных установок, разработки конструкторской документации, построения 3D-моделей',
-    icon: 'assets/img/icons/career/engineer-1-1.svg',
+    icon: '/assets/img/icons/career/engineer-1-1.svg',
     link: '#',
     isCenter: true
   },
@@ -26,7 +26,7 @@ const vacancies = [
     id: 3,
     title: 'Инженер-проектировщик водоснабжения и канализации',
     description: 'Ищем специалиста для разработки проектной документации разделов водоснабжение и канализация для объектов промышленного назначения',
-    icon: 'assets/img/icons/career/architec-1.svg',
+    icon: '/assets/img/icons/career/architec-1.svg',
     link: '#'
   }
 ]
@@ -36,25 +36,25 @@ const values = [
     id: 1,
     title: 'Проактивность',
     description: 'Мы ответственны за все, что с нами происходит. У нас есть потребность действовать, ставить вопросы, связанные с улучшениями, быть вовлеченными и лично участвовать в их решении.',
-    icon: 'assets/img/icons/career/like-1.svg'
+    icon: '/assets/img/icons/career/like-1.svg'
   },
   {
     id: 2,
     title: 'Ответственность',
     description: 'Ответственно относись к выполнению поставленных задач, оперативно исправляй недочёты и будь готов отстаивать предложенные решения.',
-    icon: 'assets/img/icons/career/social-responsibility-1.svg'
+    icon: '/assets/img/icons/career/social-responsibility-1.svg'
   },
   {
     id: 3,
     title: 'Обучаемость',
     description: 'Используй образовательные ресурсы Общества – это твой трамплин в профессии и карьере.',
-    icon: 'assets/img/icons/career/elearning-1.svg'
+    icon: '/assets/img/icons/career/elearning-1.svg'
   },
   {
     id: 4,
     title: 'Командный дух',
     description: 'Мы работаем над общим делом и его успех зависит от командной работы',
-    icon: 'assets/img/icons/career/team-1.svg'
+    icon: '/assets/img/icons/career/team-1.svg'
   }
 ]
 
@@ -68,27 +68,27 @@ const stats = [
   {
     id: 2,
     text: 'опытные СПЕЦИАЛИСТЫ по всем направлениям',
-    icon: 'assets/img/icons/career/experience-1-1-1.svg'
+    icon: '/assets/img/icons/career/experience-1-1-1.svg'
   },
   {
     id: 3,
     text: 'более 50 выполненных ПРОЕКТОВ в РФ и Республике Беларусь',
-    icon: 'assets/img/icons/career/world-1-1-1.svg'
+    icon: '/assets/img/icons/career/world-1-1-1.svg'
   },
   {
     id: 4,
     text: 'нас отличает АКТИВНАЯ жизненная позиция и командный дух',
-    icon: 'assets/img/icons/career/team-2-1-1.svg'
+    icon: '/assets/img/icons/career/team-2-1-1.svg'
   },
   {
     id: 5,
     text: 'оснащение современной техникой и программным обеспечением',
-    icon: 'assets/img/icons/career/invention-1-1-1.svg'
+    icon: '/assets/img/icons/career/invention-1-1-1.svg'
   },
   {
     id: 6,
     text: 'ОТКРЫТЫ миру; делимся знаниями, опытом и ноу-хау',
-    icon: 'assets/img/icons/career/openmindness-2-1-1.svg'
+    icon: '/assets/img/icons/career/openmindness-2-1-1.svg'
   }
 ]
 
@@ -97,49 +97,49 @@ const benefits = [
     id: 1,
     title: 'Расширенный социальный пакет',
     description: 'Все сотрудники получают белую зарплату, полный социальный пакет, официальное трудоустройство и полис ДМС. А также участие в праздничных мероприятиях, корпоративный спорт и др.',
-    icon: 'assets/img/icons/career/salary-1.svg'
+    icon: '/assets/img/icons/career/salary-1.svg'
   },
   {
     id: 2,
     title: 'Корпоративный университет',
     description: 'В ООО «Татбелэнергопроект» бережно хранят и передают профессиональные знания и опыт. Система наставничества и техническая учёба помогают обучаться новому и повышать квалификацию.',
-    icon: 'assets/img/icons/career/education-1.svg'
+    icon: '/assets/img/icons/career/education-1.svg'
   },
   {
     id: 3,
     title: 'Корпоративный отдых и спорт',
     description: 'Мы весело отмечаем день рождения компании, новый год и день энергетика, выезжаем на собственную базу отдыха, в Шерегеш, на Алтай. За счёт компании бегаем на лыжах, катаемся на велосипедах, плаваем, играем в волейбол и занимаемся йогой и пилатесом.',
-    icon: 'assets/img/icons/career/image-1.svg'
+    icon: '/assets/img/icons/career/image-1.svg'
   },
   {
     id: 4,
     title: 'Лицензионное ПО и условия труда',
     description: 'Мы предоставляем полностью лицензированные рабочие места и требуемые условия работы на объектах – все, что необходимо для качественного выполнения своей работы с максимальной пользой для компании.',
-    icon: 'assets/img/icons/career/award.svg'
+    icon: '/assets/img/icons/career/award.svg'
   },
   {
     id: 5,
     title: 'Неограниченные возможности для роста и развития',
     description: 'ООО «Татбелэнергопроект» предлагает возможности для саморазвития, профессионального и карьерного роста. Общество поддерживает непрерывное обучение и повышение квалификации персонала.',
-    icon: 'assets/img/icons/career/apps.svg'
+    icon: '/assets/img/icons/career/apps.svg'
   },
   {
     id: 6,
     title: 'Наставничество и поддержка профессионалов',
     description: 'В компании действует система наставничества для молодых специалистов, дающая неограниченные возможности профессионального роста как самого наставника, так и новичка в профессии.',
-    icon: 'assets/img/icons/career/mentor-1.svg'
+    icon: '/assets/img/icons/career/mentor-1.svg'
   },
   {
     id: 7,
     title: 'Сложные и интересные проекты',
     description: 'ООО «Татбелэнергопроект» выполняет сложные проекты в области промышленного проектирования объектов энергетики – тепловые станции, источники тепла, объекты промышленных предприятий.',
-    icon: 'assets/img/icons/career/team-management-1.svg'
+    icon: '/assets/img/icons/career/team-management-1.svg'
   },
   {
     id: 8,
     title: 'Командировки в России и за рубежом',
     description: 'ООО «Татбелэнергопроект» выполняет проекты в Российской Федерации и Республике Беларусь. Общество имеет филиал в г. Казань. География проектов охватывает ведущие энергетические и промышленные предприятия.',
-    icon: 'assets/img/icons/career/business-trip-1.svg'
+    icon: '/assets/img/icons/career/business-trip-1.svg'
   }
 ]
 
@@ -147,22 +147,22 @@ export const traditions = [
   {
     id: 1,
     title: 'Веселиться на корпоративах',
-    image: 'assets/img/team.JPG'
+    image: '/assets/img/team.JPG'
   },
   {
     id: 2,
     title: 'Вместе не только работать',
-    image: 'assets/img/career2.webp'
+    image: '/assets/img/career2.webp'
   },
   {
     id: 3,
     title: 'Делать свою работу хорошо',
-    image: 'assets/img/team2.JPG'
+    image: '/assets/img/team2.JPG'
   },
   {
     id: 4,
     title: 'Летать в продуктивные командировки',
-    image: 'assets/img/career.jpeg'
+    image: '/assets/img/career.jpeg'
   }
 ]
 
@@ -172,7 +172,7 @@ function CareerMain() {
       <section id="career_main">
         <div className="container"></div>
         <div className="career_main_bg">
-          <img src="assets/img/team.JPG" alt="" />
+          <img src="/assets/img/team.JPG" alt="" />
         </div>
       </section>
 

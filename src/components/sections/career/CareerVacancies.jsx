@@ -53,7 +53,7 @@ function CareerVacancies() {
           <h1>Вакансии</h1>
         </div>
         <div className="career_main_bg">
-          <img src="/wp-content/uploads/2024/01/image-9.png" alt="" />
+          <img src="/assets/img/team.JPG" alt="" />
         </div>
       </section>
 

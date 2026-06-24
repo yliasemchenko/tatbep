@@ -9,7 +9,7 @@ const newsData = {
     themes: ['Энергетика', 'Татбелэнергопроект'],
     title: 'Специалисты Татбелэнергопроект изучили работу Новосибирской ТЭЦ-4 изнутри',
     description: '25-26 июня сотрудники ООО «Татбелэнергопроект» побывали на закрытой экскурсии по Новосибирской ТЭЦ-4, организованной специально для компании.',
-    image: '/wp-content/uploads/2025/06/novosibirsk-chp-4-visit_3.jpg',
+    image: '/assets/img/press_center/1.jpg',
     link: '/press-center/news/novosibirsk-chp-4'
   },
   items: [
@@ -17,28 +17,28 @@ const newsData = {
       date: '16.07.2025',
       themes: ['Энергетика', 'Татбелэнергопроект'],
       title: 'Татбелэнергопроект обсудил развитие угольной генерации на научно-техническом совете ЕЭС',
-      image: '/wp-content/uploads/2025/07/2025-07-nts2.png',
+      image: '/assets/img/press_center/2.jpg',
       link: '/press-center/news/nts2'
     },
     {
       date: '09.07.2025',
       themes: ['ЦБП', 'Промышленность', 'Энергетика', 'Татбелэнергопроект'],
       title: 'Татбелэнергопроект провел переговоры с турецкой компанией SINTEK',
-      image: '/wp-content/uploads/2025/07/sintek1.jpg',
+      image: '/assets/img/press_center/3.jpg',
       link: '/press-center/news/sintek'
     },
     {
       date: '07.07.2025',
       themes: ['Татбелэнергопроект'],
       title: 'Татбелэнергопроект развивает внутреннюю структуру: сессия Аркадия Цукера',
-      image: '/wp-content/uploads/2025/07/zuker3.jpg',
+      image: '/assets/img/press_center/1.jpg',
       link: '/press-center/news/zuker'
     },
     {
       date: '27.06.2025',
       themes: ['Татбелэнергопроект'],
       title: 'Татбелэнергопроект стал соорганизатором дуатлона памяти Максима Серанта',
-      image: '/wp-content/uploads/2025/06/2025-duatlon_3.jpg',
+      image: '/assets/img/press_center/2.jpg',
       link: '/press-center/news/duatlon'
     }
   ]

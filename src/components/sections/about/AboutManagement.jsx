@@ -10,43 +10,43 @@ const management = [
   {
     name: 'Виктор Яковлевич Гладышев',
     position: 'Директор',
-    image: 'assets/img/avatar_no.webp',
+    image: '/assets/img/avatar_no.webp',
     link: '#'
   },
   {
     name: 'Иван Иванович Врублевский',
     position: 'Главный инженер',
-    image: 'assets/img/avatar_no.webp',
+    image: '/assets/img/avatar_no.webp',
     link: '#'
   },
   {
     name: 'Александр Владимирович Антосюк',
     position: 'Заместителем директора по производству',
-    image: 'assets/img/avatar_no.webp',
+    image: '/assets/img/avatar_no.webp',
     link: '#'
   },
   {
     name: 'Леонид Юрьевич Кулебякин',
     position: 'Первый заместитель директора',
-    image: 'assets/img/avatar_no.webp',
+    image: '/assets/img/avatar_no.webp',
     link: '#'
   },
   {
     name: 'Наталья Николаевна Отческая',
     position: 'Главный бухгалтер',
-    image: 'assets/img/avatar_no.webp',
+    image: '/assets/img/avatar_no.webp',
     link: '#'
   },
   {
     name: 'Светлана Ивановна Володько',
     position: 'Начальник отдела кадров',
-    image: 'assets/img/avatar_no.webp',
+    image: '/assets/img/avatar_no.webp',
     link: '#'
   },
   {
     name: 'Ольга Сергеевна Астапова',
     position: 'Cекретарь',
-    image: 'assets/img/avatar_no.webp',
+    image: '/assets/img/avatar_no.webp',
     link: '#'
   }
 ]

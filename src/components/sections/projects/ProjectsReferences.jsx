@@ -7,9 +7,9 @@ const filterIcon = '/assets/img/icons/filter_icon.svg'
 const availableYears = ['в работе', 2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017]
 
 // Текущие и завершённые проекты
-const defaultImage = '/assets/img/projects/2017/project1.webp'
-const defaultImage1 = '/assets/img/projects/2017/project2.webp'
-const defaultImage2 = '/assets/img/projects/2017/project3.webp'
+const defaultImage = '/assets/img/projects/main/nknx.jpg'
+const defaultImage1 = '/assets/img/projects/main/borisov.jpg'
+const defaultImage2 = '/assets/img/projects/main/elabug.jpg'
 
 const projectsData = [
   // Текущие проекты (в работе)
