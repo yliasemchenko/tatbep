@@ -10,25 +10,25 @@ function ContactInfo() {
             <strong>Адрес:</strong>{' '}
             <span itemProp="postalCode">220020</span>,{' '}
             <span itemProp="addressLocality">Беларусь, г. Минск</span>,{' '}
-            <span itemProp="streetAddress">ул. Ольшевского, 20/11</span>
+            <span itemProp="streetAddress">ул. Тестовая, 25</span>
           </p>
         </div>
         <div className="cont_page_div">
           <img src="/assets/img/icons/cont/2.svg" alt="" />
           <p>
-            <strong>Почтовый адрес:</strong> 220020, Беларусь, <br /> г. Минск, ул. Ольшевского, 20/11
+            <strong>Почтовый адрес:</strong> 220020, Беларусь, <br /> г. Минск, ул. Тестовая, 25
           </p>
         </div>
         <div className="cont_page_div">
           <img src="/assets/img/icons/cont/3.svg" alt="" />
-          <a href="tel:+375173082601" itemProp="telephone">
-            <strong>Тел.:</strong> +375 17 308-26-01
+          <a href="tel:+375171112233" itemProp="telephone">
+            <strong>Тел.:</strong> +375 17 111-22-33
           </a>
         </div>
         <div className="cont_page_div">
           <img src="/assets/img/icons/cont/4.svg" alt="" />
-          <a href="mailto:info@tatbep.by" itemProp="email">
-            <strong>E-mail:</strong> info@tatbep.by
+          <a href="mailto:test@tatbep.by" itemProp="email">
+            <strong>E-mail:</strong> test@tatbep.by
           </a>
         </div>
         <div className="row news_header">

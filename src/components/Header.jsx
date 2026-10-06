@@ -74,7 +74,7 @@ function Header() {
               <div className="navbar_actions">
                 <div className="navbar_contacts">
                   <a href="mailto:info@tatbep.by">info@tatbep.by</a>
-                  <a href="tel:+37517308-26-01">+375 17 308-26-01</a>
+                  <a href="tel:+375171112233">+375 17 111-22-33</a>
                 </div>
                 <img
                   onClick={toggleSearchModal}
@@ -106,7 +106,7 @@ function Header() {
       <div className={`mobile_header_secret ${isMobileMenuOpen ? 'mobile_header_secret_active' : ''}`}>
         <div className="mobile_secret_top">
           <div className="mobile_secret_top_cont">
-            <a href="tel:+37517308-26-01">+375 17 308-26-01</a>
+            <a href="tel:+375171112233">+375 17 111-22-33</a>
             <a href="mailto:info@tatbep.by">info@tatbep.by</a>
           </div>
         </div>
