@@ -1,99 +1,111 @@
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import NumbersSection from '../components/sections/NumbersSection'
+import { Link } from 'react-router-dom'
+import { Arrow, Photo } from '../components/ui'
+import HomeAboutSection from '../components/sections/HomeAboutSection'
 import ProjectsSection from '../components/sections/ProjectsSection'
-import ProjectsGeoSection from '../components/sections/ProjectsGeoSection'
-import NewsSection from '../components/sections/NewsSection'
 import CurrentProjectsSection from '../components/sections/CurrentProjectsSection'
+import NewsSection from '../components/sections/NewsSection'
+import ProjectsGeoSection from '../components/sections/ProjectsGeoSection'
 import ClientsSection from '../components/sections/ClientsSection'
-import TraditionsSection from '../components/sections/TraditionsSection'
+import BestEmployeesSection from '../components/sections/BestEmployeesSection'
+import CareerBandSection from '../components/sections/CareerBandSection'
+
+const directions = [
+  {
+    id: 'project-docs',
+    title: 'Проектирование объектов',
+    text: 'Комплексное проектирование тепловых электростанций, источников тепла и тепловых сетей, объектов общезаводского хозяйства крупных промышленных предприятий — с сопровождением проекта на всех этапах.',
+    image: '/assets/img/main_bg1.jpg',
+    tone: 'duo--blue',
+    extra: 'ОТР · ТЭР · ПД · РД · СД',
+    main: true
+  },
+  {
+    id: 'bim-models',
+    title: 'Информационные модели',
+    text: 'Трёхмерные модели объектов для координации разделов и поиска коллизий до начала строительства.',
+    image: '/assets/img/about/tehnologii.gif',
+    tone: 'duo--navy',
+    extra: '3D-модель · координация разделов · коллизии'
+  },
+  {
+    id: 'authors-supervision',
+    title: 'Авторский надзор',
+    text: 'Контроль соответствия строительно-монтажных работ проектной документации и решение вопросов на площадке.',
+    image: '/assets/img/main_bg3.jpg',
+    tone: 'duo--yellow',
+    extra: 'АН · на всех этапах строительства'
+  }
+]
 
 function Home() {
-
   return (
     <>
-      <section id="main">
-        <div className="container container_main" style={{ position: 'absolute', marginBottom: '20px' }}>
-          <div className="swiper-pagination"></div>
+      <section className="hero hero--enter">
+        <div className="wrap">
+          <div className="hero__grid">
+            <div className="hero__text">
+              <div className="hero__meta">
+                <span className="cap cap--blue">ООО «Татбелэнергопроект»</span>
+                <span className="cap">Проектная организация</span>
+                <span className="cap">С 2015 года</span>
+              </div>
+              <h1 className="h-display">
+                Проектируем электростанции, источники тепла и&nbsp;инфраструктуру <span className="mark-y">промышленных предприятий</span>
+              </h1>
+              <p className="lead">
+                Готовим обоснования и ТЭО, выпускаем проектную и рабочую документацию, ведём информационные модели и авторский надзор. Среди заказчиков — генерирующие компании, нефтехимические, химические и металлургические предприятия Беларуси и России.
+              </p>
+              <div className="btn-row">
+                <Link to="/about" className="btn btn--solid">О компании <Arrow /></Link>
+                <Link to="/proekty" className="btn">Проекты <Arrow /></Link>
+              </div>
+            </div>
+            <Photo
+              className="hero__photo"
+              src="/assets/img/projects/main/nknx.jpg"
+              alt="Лемаевская ПГУ-495 МВт, ПАО «Нижнекамскнефтехим»"
+              caption="Лемаевская ПГУ-495 МВт · ПАО «Нижнекамскнефтехим» · ПД, РД, АН"
+            />
+          </div>
         </div>
-        <Swiper
-          modules={[Autoplay, Pagination]}
-          spaceBetween={0}
-          slidesPerView={1}
-          // autoplay={{ delay: 5000 }}
-          pagination={{
-            el: '.swiper-pagination',
-            clickable: true,
-            dynamicBullets: true
-          }}
-          className="swiper swiper_main"
-        >
-          <SwiperSlide>
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="main_plahka">
-                    <h1>ПРОЕКТИРОВАНИЕ ОБЪЕКТОВ</h1>
-                    <p>ООО «Татбелэнергопроект» выполняет комплексное проектирование объектов энергетики и промышленности: тепловые электрические станции, источники тепла и тепловые сети, объекты общезаводского хозяйства крупных промышленных предприятий. Мы обеспечиваем высокое качество проектной документации, оптимизацию технических и экономических показателей, а также сопровождение проекта на всех этапах его реализации.</p>
-                    <a href="#bolshaya-energetika" className="btn_main btn_main_white">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="swiper_main_bg">
-              <img src="/assets/img/main_bg1.jpg" alt="" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="main_plahka">
-                    <h2>РАЗРАБОТКА ИНФОРМАЦИОННЫХ МОДЕЛЕЙ</h2>
-                    <p>Специалисты ООО «Татбелэнергопроект» разрабатывают информационные модели объектов с применением современных BIM-технологий. Это позволяет повысить точность проектирования, обеспечить прозрачность процессов, сократить сроки реализации и минимизировать риски на этапе строительства и эксплуатации.</p>
-                    <a href="#cbp" className="btn_main btn_main_white">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="swiper_main_bg">
-              <div className="swiper_main_plashka"></div>
-              <img src="/assets/img/main_bg2.jpg" alt="" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="main_plahka">
-                    <h2>АВТОРСКИЙ НАДЗОР ЗА СТРОИТЕЛЬСТВОМ ОБЪЕКТОВ</h2>
-                    <p>ООО «Татбелэнергопроект» осуществляет авторский надзор за строительством объектов, обеспечивая соответствие выполняемых работ проектной документации и техническим решениям. Мы контролируем качество реализации проектных решений, оперативно решаем возникающие вопросы и способствуем соблюдению сроков и стандартов строительства.</p>
-                    <a href="#promyshlennost" className="btn_main btn_main_white">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="swiper_main_bg">
-              <div className="swiper_main_plashka"></div>
-              <img src="/assets/img/main_bg3.jpg" alt="" />
-            </div>
-          </SwiperSlide>
-        </Swiper>
-        <a href="#numbers" className="abs_arrow">
-          <img src="/assets/img/icons/arrow_down.svg" alt="" />
-        </a>
+        <div className="wrap">
+          <div className="dirs">
+            {directions.map((d, i) => (
+              <Link
+                key={d.id}
+                to={`/uslugi#${d.id}`}
+                className={`dir duo duo-hover ${d.tone}${d.main ? ' dir--main' : ''}`}
+                style={{ '--i': i }}
+                data-center
+              >
+                <img src={d.image} alt="" loading="lazy" />
+                <span className="ticks" aria-hidden="true" />
+                <span className="num">0{i + 1} — {d.main ? 'основное направление' : 'направление'}</span>
+                <h3 className="h3">{d.title}</h3>
+                <p>{d.text}</p>
+                <span className="dir__extra" aria-hidden="true"><span className="cap">{d.extra}</span></span>
+                <span className="more">Подробнее <Arrow /></span>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <NumbersSection />
+      <HomeAboutSection />
       <ProjectsSection />
-      <NewsSection />
       <CurrentProjectsSection />
+      <NewsSection />
       <ProjectsGeoSection />
       <ClientsSection />
-      <TraditionsSection />
+      <BestEmployeesSection />
+      <CareerBandSection />
+
+      <section className="sec sec--tight sec--yellow">
+        <div className="wrap strip">
+          <p className="h3">Есть вопрос о проекте, сотрудничестве или работе в компании?</p>
+          <Link to="/contacts" className="btn btn--solid">Контакты <Arrow /></Link>
+        </div>
+      </section>
     </>
   )
 }

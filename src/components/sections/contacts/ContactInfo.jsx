@@ -1,47 +1,43 @@
+import { company, contacts } from '../../../data/company'
+import { Todo } from '../../ui'
+
 function ContactInfo() {
   return (
-    <div className="col-lg-6" itemScope itemType="http://schema.org/Organization">
-      <h1 className="title_cont">контакты</h1>
-      <p className="subtitle_cont" itemProp="name">ООО «Татбелэнергопроект»</p>
-      <div className="cont_page_row">
-        <div className="cont_page_div" itemProp="address" itemScope itemType="http://schema.org/PostalAddress">
-          <img src="/assets/img/icons/cont/1.svg" alt="" />
-          <p>
-            <strong>Адрес:</strong>{' '}
-            <span itemProp="postalCode">220020</span>,{' '}
-            <span itemProp="addressLocality">Беларусь, г. Минск</span>,{' '}
-            <span itemProp="streetAddress">ул. Тестовая, 25</span>
-          </p>
+    <div className="contact-grid__info" itemScope itemType="https://schema.org/Organization">
+      <dl className="dl">
+        <div className="dl__row">
+          <dt>Организация</dt>
+          <dd itemProp="name">{company.legalName}</dd>
         </div>
-        <div className="cont_page_div">
-          <img src="/assets/img/icons/cont/2.svg" alt="" />
-          <p>
-            <strong>Почтовый адрес:</strong> 220020, Беларусь, <br /> г. Минск, ул. Тестовая, 25
-          </p>
+        <div className="dl__row" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+          <dt>Адрес</dt>
+          <dd>
+            <span itemProp="postalCode">{contacts.postalCode}</span>,{' '}
+            <span itemProp="addressLocality">{contacts.city}</span>,{' '}
+            {contacts.street ? <span itemProp="streetAddress">{contacts.street}</span> : <Todo>улица и дом</Todo>}
+          </dd>
         </div>
-        <div className="cont_page_div">
-          <img src="/assets/img/icons/cont/3.svg" alt="" />
-          <a href="tel:+375171112233" itemProp="telephone">
-            <strong>Тел.:</strong> +375 17 111-22-33
-          </a>
+        <div className="dl__row">
+          <dt>Телефон</dt>
+          <dd>
+            {contacts.phone
+              ? <a href={`tel:${contacts.phone.replace(/[^\d+]/g, '')}`} itemProp="telephone">{contacts.phone}</a>
+              : <Todo>телефон</Todo>}
+          </dd>
         </div>
-        <div className="cont_page_div">
-          <img src="/assets/img/icons/cont/4.svg" alt="" />
-          <a href="mailto:test@tatbep.by" itemProp="email">
-            <strong>E-mail:</strong> test@tatbep.by
-          </a>
+        <div className="dl__row">
+          <dt>E-mail</dt>
+          <dd>
+            {contacts.email
+              ? <a href={`mailto:${contacts.email}`} itemProp="email">{contacts.email}</a>
+              : <Todo>e-mail</Todo>}
+          </dd>
         </div>
-        <div className="row news_header">
-          <button
-            className="btn_main btn_main_blue"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal_zayavka_press"
-            style={{ maxWidth: '360px', minWidth: '300px', display: 'block !important' }}
-          >
-            связаться
-          </button>
+        <div className="dl__row">
+          <dt>Филиал</dt>
+          <dd>{contacts.branch}{contacts.branchAddress ? `, ${contacts.branchAddress}` : <>{', '}<Todo>адрес филиала</Todo></>}</dd>
         </div>
-      </div>
+      </dl>
     </div>
   )
 }

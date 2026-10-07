@@ -1,121 +1,39 @@
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
-import { Link } from 'react-router-dom'
-import 'swiper/css'
-import 'swiper/css/navigation'
-
-const arrowRightIcon = '/assets/img/icons/arrow_right.svg'
-
-const management = [
-  {
-    name: 'Виктор Яковлевич Гладышев',
-    position: 'Директор',
-    image: '/assets/img/avatar_no.webp',
-    link: '#'
-  },
-  {
-    name: 'Иван Иванович Врублевский',
-    position: 'Главный инженер',
-    image: '/assets/img/avatar_no.webp',
-    link: '#'
-  },
-  {
-    name: 'Александр Владимирович Антосюк',
-    position: 'Заместителем директора по производству',
-    image: '/assets/img/avatar_no.webp',
-    link: '#'
-  },
-  {
-    name: 'Леонид Юрьевич Кулебякин',
-    position: 'Первый заместитель директора',
-    image: '/assets/img/avatar_no.webp',
-    link: '#'
-  },
-  {
-    name: 'Наталья Николаевна Отческая',
-    position: 'Главный бухгалтер',
-    image: '/assets/img/avatar_no.webp',
-    link: '#'
-  },
-  {
-    name: 'Светлана Ивановна Володько',
-    position: 'Начальник отдела кадров',
-    image: '/assets/img/avatar_no.webp',
-    link: '#'
-  },
-  {
-    name: 'Ольга Сергеевна Астапова',
-    position: 'Cекретарь',
-    image: '/assets/img/avatar_no.webp',
-    link: '#'
-  }
-]
+import { management } from '../../../data/company'
+import { PhotoSlot, SectionHead, Todo, pad } from '../../ui'
 
 function AboutManagement() {
+  const [head, ...rest] = management
+  const missing = management.some((p) => !p.photo)
+
   return (
-    <section id="rukovodstvo">
-      <div className="container">
-        <h2 className="big">Руководство</h2>
-        {/* Слайдер только на мобильных (md и меньше) */}
-        <div className="swiper swiper_rukovodstvo d-block d-md-none">
-          <Swiper
-            modules={[Navigation]}
-            spaceBetween={30}
-            slidesPerView={1}
-            navigation={{
-              prevEl: '.swiper-button-prev-rukovodstvo',
-              nextEl: '.swiper-button-next-rukovodstvo'
-            }}
-            breakpoints={{
-              768: {
-                slidesPerView: 2
-              },
-              1024: {
-                slidesPerView: 3
-              },
-              1200: {
-                slidesPerView: 4
-              }
-            }}
-          >
-            {management.map((person, index) => (
-              <SwiperSlide key={index}>
-                <div className="col-lg-3">
-                  <Link to={person.link} className="rukovodstvo_div">
-                    <div className="rukovodstvo_img">
-                      <img src={person.image} alt={person.name} />
-                    </div>
-                    <div className="rukovodstvo_text">
-                      <h4>{person.name}</h4>
-                      <p>{person.position}</p>
-                      <img className="arrow" src={arrowRightIcon} alt="" />
-                    </div>
-                  </Link>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <div className="swiper-navigation">
-            <div className="swiper-button-prev swiper-button-prev-rukovodstvo"></div>
-            <div className="swiper-button-next swiper-button-next-rukovodstvo"></div>
+    <section className="sec sec--paper" id="management">
+      <div className="wrap">
+        <SectionHead
+          index={4}
+          label="Руководство"
+          title="Руководство компании"
+          aside={missing && <Todo>портретные фото руководителей — сейчас стоят заглушки</Todo>}
+        />
+
+        <div className="leader">
+          <PhotoSlot className="leader__photo" src={head.photo} alt={head.name} note="Портрет" />
+          <div className="leader__text">
+            <span className="num">01</span>
+            <p className="cap">{head.position}</p>
+            <h3 className="h2">{head.name}</h3>
           </div>
         </div>
-        {/* Сетка карточек только на планшетах и десктопах */}
-        <div className="row d-none d-md-flex">
-          {management.map((person, index) => (
-            <div key={index} className="col-lg-3">
-              <Link to={person.link} className="rukovodstvo_div">
-                <div className="rukovodstvo_img">
-                  <img src={person.image} alt={person.name} />
-                </div>
-                <div className="rukovodstvo_text">
-                  <h4>{person.name}</h4>
-                  <p>{person.position}</p>
-                </div>
-              </Link>
-            </div>
+
+        <ul className="leaders">
+          {rest.map((person, i) => (
+            <li key={person.name} className="leaders__item">
+              <PhotoSlot className="leaders__photo" src={person.photo} alt={person.name} note="Портрет" />
+              <span className="num">{pad(i + 2)}</span>
+              <strong>{person.name}</strong>
+              <span className="pos">{person.position}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )

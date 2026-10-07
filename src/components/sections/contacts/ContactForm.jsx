@@ -1,137 +1,75 @@
 import { useState } from 'react'
+import { Arrow, Todo } from '../../ui'
+
+const initial = { name: '', organization: '', contact: '', message: '' }
 
 function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    request: ''
-  })
+  const [form, setForm] = useState(initial)
   const [agreed, setAgreed] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState('idle')
+  const [error, setError] = useState('')
 
-  const formatPhone = (value) => {
-    // Удаляем все нецифровые символы
-    const numbers = value.replace(/\D/g, '')
-    
-    // Форматируем по маске +375 (__) ___-__-__
-    if (numbers.length === 0) return ''
-    if (numbers.length <= 3) return `+${numbers}`
-    if (numbers.length <= 5) return `+${numbers.slice(0, 3)} (${numbers.slice(3)}`
-    if (numbers.length <= 8) return `+${numbers.slice(0, 3)} (${numbers.slice(3, 5)}) ${numbers.slice(5)}`
-    if (numbers.length <= 10) return `+${numbers.slice(0, 3)} (${numbers.slice(3, 5)}) ${numbers.slice(5, 8)}-${numbers.slice(8)}`
-    return `+${numbers.slice(0, 3)} (${numbers.slice(3, 5)}) ${numbers.slice(5, 8)}-${numbers.slice(8, 10)}-${numbers.slice(10, 12)}`
-  }
+  const onChange = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    
-    if (name === 'phone') {
-      setFormData(prev => ({
-        ...prev,
-        [name]: formatPhone(value)
-      }))
-    } else if (name === 'name') {
-      // Только буквы и пробелы для имени
-      const filteredValue = value.replace(/[0-9]/g, '')
-      setFormData(prev => ({
-        ...prev,
-        [name]: filteredValue
-      }))
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value
-      }))
-    }
-  }
-
-  const handleSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault()
     if (!agreed) {
-      alert('Необходимо согласие на обработку персональных данных')
+      setError('Отметьте согласие на обработку персональных данных.')
       return
     }
-    
-    setIsSubmitting(true)
-    // Здесь будет логика отправки формы
-    // В реальном приложении здесь будет вызов API
+    setError('')
+    setStatus('sending')
+    // Отправка не подключена: адрес обработчика формы не подтверждён
     setTimeout(() => {
-      setIsSubmitting(false)
-      alert('Спасибо! Ваше сообщение отправлено.')
-      setFormData({ name: '', phone: '', request: '' })
+      setStatus('done')
+      setForm(initial)
       setAgreed(false)
-    }, 1000)
+    }, 600)
   }
 
   return (
-    <div className="col-lg-6">
-      <form className="wpcf7-form cont_page_form" onSubmit={handleSubmit}>
-        <p className="cont_form_text">
-          Если Вы хотите получить консультацию, коммерческое предложение, развернутую информацию или задать вопрос — оставьте нам свои контакты, и мы с Вами свяжемся.
-        </p>
-        <p>
-          <input
-            type="text"
-            name="name"
-            className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required border_black"
-            id="onlyChars"
-            aria-required="true"
-            placeholder="Ваше ФИО"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <br />
-          <input
-            type="tel"
-            name="phone"
-            className="wpcf7-form-control wpcf7-mask wpcf7-validates-as-required wpcf7mf-mask border_black"
-            aria-required="true"
-            placeholder="+375 (__) ___-__-__"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            maxLength={19}
-          />
-          <br />
-          <input
-            type="text"
-            name="request"
-            className="wpcf7-form-control wpcf7-text border_black"
-            placeholder="Запрос"
-            value={formData.request}
-            onChange={handleChange}
-          />
-        </p>
-        <div className="check_agree">
-          <p>
-            <input
-              type="checkbox"
-              name="acceptance"
-              id="contact-agreement"
-              checked={agreed}
-              onChange={(e) => setAgreed(e.target.checked)}
-            />
-          </p>
-          <p>
-            Согласен с{' '}
-            <a href="/politika-obrabotki-personalnyh-dannyh.html" target="_blank" rel="noopener noreferrer">
-              политикой конфиденциальности сайта
-            </a>{' '}
-            и даю{' '}
-            <a href="/politika-obrabotki-personalnyh-dannyh.html" target="_blank" rel="noopener noreferrer">
-              согласие на обработку персональных данных, разрешенных для распространения
-            </a>
-          </p>
+    <div className="contact-grid__form" id="form">
+      <form className="form" onSubmit={onSubmit} noValidate={false}>
+        <div>
+          <h2 className="h3">Написать в компанию</h2>
+          <p className="text-muted" style={{ marginTop: 8 }}>Ответим на почту или по телефону, который вы укажете.</p>
         </div>
-        <p>
-          <input
-            type="submit"
-            className={`wpcf7-form-control wpcf7-submit has-spinner blue_btn_send ${isSubmitting ? 'submitting' : ''}`}
-            value={isSubmitting ? 'Отправка...' : 'Отправить'}
-            disabled={isSubmitting}
-          />
-        </p>
+        <div className="field">
+          <label htmlFor="cf-name">Имя</label>
+          <input id="cf-name" name="name" required value={form.name} onChange={onChange} autoComplete="name" />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-org">Организация (необязательно)</label>
+          <input id="cf-org" name="organization" value={form.organization} onChange={onChange} autoComplete="organization" />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-contact">Телефон или e-mail</label>
+          <input id="cf-contact" name="contact" required value={form.contact} onChange={onChange} />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-message">Сообщение</label>
+          <textarea id="cf-message" name="message" required value={form.message} onChange={onChange} />
+        </div>
+        <label className="check" htmlFor="cf-agree">
+          <input id="cf-agree" type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
+          <span>
+            Согласен на обработку персональных данных в соответствии с политикой конфиденциальности.{' '}
+            <Todo>ссылка на политику обработки персональных данных</Todo>
+          </span>
+        </label>
+        {error && <p className="form__error" role="alert">{error}</p>}
+        {status === 'done' ? (
+          <div className="form__done" role="status">
+            <strong>Сообщение принято.</strong> Спасибо, что написали.
+            <Todo block>форма не подключена к почте — нужен адрес, куда отправлять сообщения</Todo>
+          </div>
+        ) : (
+          <div>
+            <button type="submit" className="btn btn--solid" disabled={status === 'sending'}>
+              {status === 'sending' ? 'Отправляем…' : 'Отправить'} <Arrow />
+            </button>
+          </div>
+        )}
       </form>
     </div>
   )

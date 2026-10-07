@@ -1,14 +1,13 @@
-import { Link } from 'react-router-dom'
+import { PageHero } from '../../ui'
 
 function ContactsMain() {
   return (
-    <div className="container">
-      <div className="breadcrump">
-        <Link to="/">Главная</Link>
-        <p>&gt;</p>
-        <Link to="/contacts">Контакты</Link>
-      </div>
-    </div>
+    <PageHero
+      crumbs={[{ label: 'Контакты', to: '/contacts' }]}
+      label="Контакты"
+      title="Контакты"
+      lead="Вопросы о проектах, сотрудничестве и работе в компании можно задать по телефону, почте или через форму на этой странице."
+    />
   )
 }
 

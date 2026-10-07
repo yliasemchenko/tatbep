@@ -1,65 +1,61 @@
 import { Link } from 'react-router-dom'
+import { Arrow, PageHero, pad } from '../../ui'
 
-const arrowRightIcon = '/assets/img/icons/arrow_right.svg'
-
-const projectCards = [
+const sections = [
   {
-    title: 'Наши проекты',
-    image: '/assets/img/projects/main/1.png',
-    link: '/proekty/referenczii',
-    className: 'press_div_img_blue',
+    title: 'Реестр проектов',
+    text: 'Объекты с 2017 года и текущие работы: заказчик, объект, стадии.',
+    to: '/proekty/referenczii',
+    image: '/assets/img/projects/main/promgres.JPG',
+    tone: 'duo--blue',
+    alt: 'Приморская ГРЭС'
   },
   {
-    title: 'география проектов',
+    title: 'География проектов',
+    text: 'Карта объектов в Беларуси, России, Иране и Афганистане.',
+    to: '/proekty/geo',
     image: '/assets/img/projects/main/2.png',
-    link: '/proekty/geo',
-    className: 'press_div_img_green',
-  
+    tone: 'duo--yellow',
+    alt: 'Карта объектов'
   },
   {
     title: 'Отзывы',
+    text: 'Отзывные письма заказчиков.',
+    to: '/proekty/otzyvy',
     image: '/assets/img/projects/main/3.png',
-    link: '/not-found',
-    className: 'press_div_img_gray',
-    textClassName: 'press_div_text_gray',
-
+    tone: 'duo--navy',
+    alt: 'Отзывные письма заказчиков'
   }
 ]
 
 function ProjectsMain() {
   return (
-    <section className="section_padding_top">
-      <div className="container">
-        <div className="breadcrump">
-          <Link to="/">Главная</Link>
-          <p>&gt;</p>
-          <Link to="/proekty">Проекты</Link>
-        </div>
-        <h1>Проекты</h1>
-        <div className="row row_press">
-          {projectCards.map((card, index) => (
-            <div key={index} className="col-lg-4">
-              <Link to={card.link} className={`press_div ${card.className}`}>
-                <div className={card.textClassName || 'press_div_text'}>
-                  <h2>{card.title}</h2>
-                </div>
-                <div className={`press_div_img ${card.className === 'press_div_img_green' || card.className === 'press_div_img_gray' ? 'press_div_img_projects' : ''}`}>
-                  <img src={card.image} alt={card.title} />
+    <>
+      <PageHero
+        crumbs={[{ label: 'Проекты', to: '/proekty' }]}
+        label="Проекты"
+        title="Электростанции, котельные и промышленная инфраструктура"
+        lead="Парогазовые и газотурбинные установки, модернизация ГРЭС и ТЭЦ, системы водоснабжения и охлаждения, фундаменты под оборудование, объекты нефтехимических предприятий."
+      />
+      <section className="sec">
+        <div className="wrap">
+          <div className="hub" data-reveal>
+            {sections.map((s, i) => (
+              <Link key={s.to} to={s.to} className={`hub__tile hub__tile--${i + 1} duo duo-hover ${s.tone}`}>
+                <img src={s.image} alt={s.alt} loading="lazy" />
+                <span className="ticks" aria-hidden="true" />
+                <span className="hub__num">{pad(i + 1)}</span>
+                <div className="hub__body">
+                  <h2 className="h1">{s.title}</h2>
+                  <p>{s.text}</p>
+                  <span className="hub__go">Открыть раздел <Arrow /></span>
                 </div>
               </Link>
-              {/* <div className="project_row_a">
-                {card.links.map((linkItem, linkIndex) => (
-                  <Link key={linkIndex} to={linkItem.link} className="project_div_a">
-                    <p>{linkItem.text}</p>
-                    <img className="arrow" src={arrowRightIcon} alt="" />
-                  </Link>
-                ))}
-              </div> */}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 

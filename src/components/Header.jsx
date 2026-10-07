@@ -1,172 +1,130 @@
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-// Images from public folder
+import { useEffect, useRef, useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { navigation } from '../data/company'
+import { inkStyle, useInk } from '../motion'
+import { pad } from './ui'
+import SiteSearch from './SiteSearch'
+
 const logoImg = '/assets/img/ker_gr.png'
-const searchIcon = '/assets/img/icons/search.svg'
-const searchBlackIcon = '/assets/img/icons/search_black.svg'
+
+function SearchIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="7" cy="7" r="5.25" stroke="currentColor" strokeWidth="1.5" />
+      <path d="m11 11 4 4" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  )
+}
 
 function Header() {
   const location = useLocation()
-  const isHomePage = location.pathname === '/'
-  
-  // На главной странице - только при скролле, на остальных - сразу
-  const [isScrolled, setIsScrolled] = useState(!isHomePage)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isCompact, setIsCompact] = useState(false)
+  const navRef = useRef(null)
+  const progressRef = useRef(null)
+  const ink = useInk(navRef, '.nav__link.active', [location.pathname])
 
   useEffect(() => {
-    // Если не главная страница, сразу устанавливаем isScrolled = true
-    if (!isHomePage) {
-      setIsScrolled(true)
-      return
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const y = window.scrollY
+      setIsCompact(y > 40)
+      const bar = progressRef.current
+      if (!bar) return
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      const isLong = max > window.innerHeight * 1.5
+      bar.style.opacity = isLong && y > 40 ? 1 : 0
+      bar.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`
     }
-    
-    // На главной странице отслеживаем скролл
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      cancelAnimationFrame(frame)
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [isHomePage])
+  }, [location.pathname])
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+  useEffect(() => {
+    setIsMenuOpen(false)
+    setIsSearchOpen(false)
+  }, [location.pathname, location.search])
 
-  const toggleSearchModal = () => {
-    setIsSearchModalOpen(!isSearchModalOpen)
-  }
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [isMenuOpen])
 
   return (
     <>
-      <header>
-        <div className="navbar_row">
-          <div className="navbar_end navbar_single">
-            <div className="container">
-              <div className="navbar_top_logo">
-                <Link to="/" className="logo">
-                  <img src={logoImg} alt="Татбелэнергопроект" />
-                </Link>
-              </div>
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link className="nav-link" to="/">Главная</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/about">О компании</Link>
-                </li>
-                <li className="nav-item dropdown">
-                  <Link className="nav-link" to="/uslugi">Услуги</Link>
-                </li>
-                <li className="nav-item dropdown">
-                  <Link className="nav-link" to="/proekty">Проекты</Link>
-                </li>
-                <li className="nav-item dropdown">
-                  <Link className="nav-link" to="/karera">Карьера</Link>
-                </li>
-                <li className="nav-item dropdown">
-                  <Link className="nav-link" to="/news">Новости</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/contacts">Контакты</Link>
-                </li>
-              </ul>
-              <div className="navbar_actions">
-                <div className="navbar_contacts">
-                  <a href="mailto:info@tatbep.by">info@tatbep.by</a>
-                  <a href="tel:+375171112233">+375 17 111-22-33</a>
-                </div>
-                <img
-                  onClick={toggleSearchModal}
-                  src={searchIcon}
-                  alt="Поиск"
-                  style={{ cursor: 'pointer' }}
-                />
-              </div>
-            </div>
+      <header className={`site-header${isCompact ? ' is-compact' : ''}`}>
+        <div className="wrap site-header__inner">
+          <Link to="/" className="site-header__logo" aria-label="Татбелэнергопроект — на главную">
+            <img src={logoImg} alt="Татбелэнергопроект" />
+          </Link>
+          <nav className="nav" aria-label="Основное меню" ref={navRef}>
+            {navigation.map((item) => (
+              <NavLink key={item.to} to={item.to} end={item.end} className="nav__link">
+                {item.label}
+              </NavLink>
+            ))}
+            <span className="nav__ink" aria-hidden="true" style={inkStyle(ink)} />
+          </nav>
+          <div className="header-tools">
+            <button type="button" className="search-btn" onClick={() => setIsSearchOpen(true)} aria-label="Поиск по сайту">
+              <SearchIcon />
+              <span className="label">Поиск</span>
+            </button>
+            <button
+              type="button"
+              className="burger"
+              aria-label={isMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setIsMenuOpen((v) => !v)}
+            >
+              <span /><span /><span />
+            </button>
           </div>
         </div>
+        <span className="scroll-progress" ref={progressRef} aria-hidden="true" />
       </header>
 
-      <div className={`mobile_header ${isScrolled ? 'mobile_header_white_scroll' : ''}`}>
-        <div className="mobile_navbar">
-          <div className="mobile_navbar_logo">
-            <Link to="/" className="logo">
-              <img src={logoImg} alt="Татбелэнергопроект" />
-            </Link>
-          </div>
-          <div className={`burger ${isMobileMenuOpen ? 'active' : ''}`} onClick={toggleMobileMenu}>
-            <span className="line"></span>
-            <span className="line_2"></span>
-            <span className="line_3"></span>
+      <div id="mobile-menu" className={`mobile-menu${isMenuOpen ? ' open' : ''}`} aria-hidden={!isMenuOpen}>
+        <div className="wrap">
+          <nav className="mobile-menu__list" aria-label="Мобильное меню">
+            {navigation.map((item, i) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                className="mobile-menu__link"
+                style={{ '--i': i }}
+                tabIndex={isMenuOpen ? 0 : -1}
+              >
+                <span className="num">{pad(i + 1)}</span>
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+          <div className="mobile-menu__foot">
+            <button
+              type="button"
+              className="btn"
+              tabIndex={isMenuOpen ? 0 : -1}
+              onClick={() => { setIsMenuOpen(false); setIsSearchOpen(true) }}
+            >
+              Поиск по сайту <SearchIcon />
+            </button>
           </div>
         </div>
       </div>
 
-      <div className={`mobile_header_secret ${isMobileMenuOpen ? 'mobile_header_secret_active' : ''}`}>
-        <div className="mobile_secret_top">
-          <div className="mobile_secret_top_cont">
-            <a href="tel:+375171112233">+375 17 111-22-33</a>
-            <a href="mailto:info@tatbep.by">info@tatbep.by</a>
-          </div>
-        </div>
-        <form className="search_div_mobile" role="search" onSubmit={(e) => { e.preventDefault(); }}>
-          <input type="text" placeholder="Поиск" name="s" className="search_input" />
-          <button type="submit" className="btn_main">
-            <img src={searchBlackIcon} alt="Поиск" />
-          </button>
-        </form>
-        <ul className="nav_mobile">
-          <li className="nav-item">
-            <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Главная</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>О компании</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/uslugi" onClick={() => setIsMobileMenuOpen(false)}>Услуги</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/proekty" onClick={() => setIsMobileMenuOpen(false)}>Проекты</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/karera" onClick={() => setIsMobileMenuOpen(false)}>Карьера</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/news" onClick={() => setIsMobileMenuOpen(false)}>Новости</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/contacts" onClick={() => setIsMobileMenuOpen(false)}>Контакты</Link>
-          </li>
-        </ul>
-      </div>
-
-      {isSearchModalOpen && (
-        <div className="modal fade show" style={{ display: 'block' }} onClick={toggleSearchModal}>
-          <div className="modal-dialog modal-dialog-qwiz modal-dialog-centered modal-dialog-product" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-content modal-content-product">
-              <div className="modal_item">
-                <div className="modal_item-body">
-                  <div className="container">
-                    <span className="contQ">
-                      <button type="button" className="btn-close" onClick={toggleSearchModal} aria-label="Close"></button>
-                    </span>
-                    <div className="online_plashka online_plashka_search">
-                      <h4>Введите ваш поисковой запрос</h4>
-                      <form className="search_div_mobile" role="search" onSubmit={(e) => { e.preventDefault(); }}>
-                        <input type="text" placeholder="Поиск" name="s" className="search_input" />
-                        <button type="submit" className="btn_main">
-                          <img src={searchBlackIcon} alt="Поиск" />
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {isSearchOpen && <SiteSearch onClose={() => setIsSearchOpen(false)} />}
     </>
   )
 }

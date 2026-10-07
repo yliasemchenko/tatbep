@@ -1,27 +1,19 @@
-import { Link } from 'react-router-dom'
-
-const arrowDownIcon = '/assets/img/icons/arrow_down.svg'
-const icon1 = '/assets/img/icons/main_slide/1.svg'
-const icon2 = '/assets/img/icons/main_slide/2.svg'
-const icon3 = '/assets/img/icons/main_slide/3.svg'
-const icon4 = '/assets/img/icons/main_slide/4.svg'
-const icon5 = '/assets/img/icons/main_slide/5.svg'
+import { PageHero, Photo, Todo } from '../../ui'
 
 function AboutMain() {
   return (
-    <section id="about_main">
-      <div className="container">
-        <div className="about_main_text">
-          <h1>Промышленное проектирование объектов энергетики</h1>
-        </div>
+    <>
+      <PageHero
+        crumbs={[{ label: 'О компании', to: '/about' }]}
+        label="О компании"
+        title="Проектируем объекты энергетики и промышленности с 2015 года"
+        lead="ООО «Татбелэнергопроект» разрабатывает документацию для тепловых электростанций, источников тепла и тепловых сетей, объектов общезаводского хозяйства крупных промышленных предприятий — и сопровождает проект до ввода объекта."
+      />
+      <div className="wrap" style={{ paddingTop: 'clamp(32px, 4vw, 56px)' }}>
+        <Photo src="/assets/img/team.JPG" alt="Сотрудники Татбелэнергопроекта" className="about-photo" />
+        <p className="cap figure-cap">Сотрудники компании · <Todo>подпись к фото: событие и год</Todo></p>
       </div>
-      <div className="about_main_bg">
-        <img src="/assets/img/team.JPG" alt="" />
-      </div>
-      <a href="#about_terms" className="abs_arrow">
-        <img src={arrowDownIcon} alt="" />
-      </a>
-    </section>
+    </>
   )
 }
 

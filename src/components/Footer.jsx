@@ -1,63 +1,60 @@
 import { Link } from 'react-router-dom'
-// Images from public folder
+import { company, contacts, services } from '../data/company'
+import { Todo } from './ui'
+
 const logoImg = '/assets/img/ker_gr.png'
-const logoFooterImg = '/assets/img/ker_gr.png'
 
 function Footer() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer>
-      <div className="footer_pc">
-        <div className="container">
-          <div className="row footer_row">
-            <div className="col-lg-3 footer_col footer_col_logo">
-              <div className="footer_div">
-                <Link to="/">
-                  <img src={logoImg} alt="Татбелэнергопроект" className="footer_logo" />
-                </Link>
-                <p>2025 © ООО «Татбелэнергопроект»</p>
-              </div>
+    <footer className="site-footer">
+      <div className="wrap">
+        <div className="site-footer__top">
+          <div className="site-footer__brand">
+            <Link to="/" aria-label="На главную">
+              <img src={logoImg} alt="Татбелэнергопроект" />
+            </Link>
+            <p>Проектная организация. Тепловые электростанции, источники тепла и тепловые сети, объекты общезаводского хозяйства промышленных предприятий.</p>
+          </div>
+          <div className="site-footer__cols">
+            <div className="site-footer__col">
+              <h4 className="cap cap--blue">Компания</h4>
+              <Link to="/about">О компании</Link>
+              <Link to="/about#history">История</Link>
+              <Link to="/about#management">Руководство</Link>
+              <Link to="/news">Новости</Link>
             </div>
-            <div className="col-lg-2 footer_col">
-              <div className="footer_div">
-                <Link to="/uslugi" className="title">услуги</Link>
-                <Link to="/uslugi#preproject-work">Предпроектные решения и ТЭО</Link>
-                <Link to="/uslugi#project-docs">Проектная и рабочая документация</Link>
-                <Link to="/uslugi#market-analysis">Анализ рынка и закупок</Link>
-                <Link to="/uslugi#bim-models">Информационные модели</Link>
-                <Link to="/uslugi#hazop-sessions">Сессии HAZOP</Link>
-                <Link to="/uslugi#authors-supervision">Авторский надзор</Link>
-              </div>
+            <div className="site-footer__col">
+              <h4 className="cap cap--blue">Услуги</h4>
+              {services.map((s) => (
+                <Link key={s.id} to={`/uslugi#${s.id}`}>{s.title}</Link>
+              ))}
             </div>
-            <div className="col-lg-2 footer_col">
-              <div className="footer_div">
-                <Link to="/proekty" className="title">проекты</Link>
-                <Link to="/proekty/referenczii">Проекты</Link>
-                <Link to="/proekty/geo">География проектов</Link>
-                <Link to="/proekty/otzyvy">Отзывы</Link>
-              </div>
+            <div className="site-footer__col">
+              <h4 className="cap cap--blue">Проекты</h4>
+              <Link to="/proekty/referenczii">Реестр проектов</Link>
+              <Link to="/proekty/geo">География проектов</Link>
+              <Link to="/proekty/otzyvy">Отзывы</Link>
+              <h4 className="cap cap--blue" style={{ marginTop: 24 }}>Карьера</h4>
+              <Link to="/karera">Работа у нас</Link>
+              <Link to="/karera/vakansii">Вакансии</Link>
             </div>
-            <div className="col-lg-2 footer_col">
-              <div className="footer_div">
-                <Link to="/karera" className="title">карьера</Link>
-                <Link to="/karera/vakansii">Вакансии</Link>
-              </div>
+            <div className="site-footer__col">
+              <h4 className="cap cap--blue">Контакты</h4>
+              <p>
+                {contacts.postalCode}, {contacts.city},{' '}
+                {contacts.street || <Todo>улица и дом</Todo>}
+              </p>
+              <p>{contacts.phone ? <a href={`tel:${contacts.phone.replace(/[^\d+]/g, '')}`}>{contacts.phone}</a> : <Todo>телефон</Todo>}</p>
+              <p>{contacts.email ? <a href={`mailto:${contacts.email}`}>{contacts.email}</a> : <Todo>e-mail</Todo>}</p>
+              <Link to="/contacts">Все контакты и форма связи</Link>
             </div>
           </div>
         </div>
-      </div>
-      <div className="footer_mobile">
-        <div className="container">
-          <Link to="/" className="logo_footer">
-            <img src={logoFooterImg} alt="Татбелэнергопроект" />
-          </Link>
-          <div className="footer_mobile_row">
-            <div className="footer_mobile_div">
-              <Link to="/uslugi">услуги</Link>
-              <Link to="/proekty">проекты</Link>
-              <Link to="/karera">карьера</Link>
-            </div>
-          </div>
-          <p className="footer_mobile_p">2025 © ООО «Татбелэнергопроект»</p>
+        <div className="site-footer__bottom">
+          <span className="cap">© {company.foundedYear}–{year} {company.legalName}</span>
+          <span className="cap">Минск · Казань</span>
         </div>
       </div>
     </footer>

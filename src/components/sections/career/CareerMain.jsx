@@ -1,318 +1,130 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-
-const arrowRightIcon = '/assets/img/icons/arrow_right.svg'
-
-const vacancies = [
-  {
-    id: 1,
-    title: 'Инженер-конструктор (начинающий специалист)',
-    description: 'Ищем специалиста для проработки технологических схем, узлов, построения 3D моделей, выполнения тепловых, аэродинамических, гидравлических и прочностных расчетов и многое другое.',
-    icon: '/assets/img/icons/career/engineer-1.svg',
-    link: '#'
-  },
-  {
-    id: 2,
-    title: 'Ведущий инженер / Главный специалист конструкторского отдела',
-    description: 'Ищем в команду инженера-конструктора с опытом выполнения теплотехнических расчетов котельных установок, разработки конструкторской документации, построения 3D-моделей',
-    icon: '/assets/img/icons/career/engineer-1-1.svg',
-    link: '#',
-    isCenter: true
-  },
-  {
-    id: 3,
-    title: 'Инженер-проектировщик водоснабжения и канализации',
-    description: 'Ищем специалиста для разработки проектной документации разделов водоснабжение и канализация для объектов промышленного назначения',
-    icon: '/assets/img/icons/career/architec-1.svg',
-    link: '#'
-  }
-]
-
-const values = [
-  {
-    id: 1,
-    title: 'Проактивность',
-    description: 'Мы ответственны за все, что с нами происходит. У нас есть потребность действовать, ставить вопросы, связанные с улучшениями, быть вовлеченными и лично участвовать в их решении.',
-    icon: '/assets/img/icons/career/like-1.svg'
-  },
-  {
-    id: 2,
-    title: 'Ответственность',
-    description: 'Ответственно относись к выполнению поставленных задач, оперативно исправляй недочёты и будь готов отстаивать предложенные решения.',
-    icon: '/assets/img/icons/career/social-responsibility-1.svg'
-  },
-  {
-    id: 3,
-    title: 'Обучаемость',
-    description: 'Используй образовательные ресурсы Общества – это твой трамплин в профессии и карьере.',
-    icon: '/assets/img/icons/career/elearning-1.svg'
-  },
-  {
-    id: 4,
-    title: 'Командный дух',
-    description: 'Мы работаем над общим делом и его успех зависит от командной работы',
-    icon: '/assets/img/icons/career/team-1.svg'
-  }
-]
-
-const stats = [
-  {
-    id: 1,
-    number: '10',
-    text: 'ЛЕТ опыта в промышленном проектировании объектов энергетики',
-    icon: null
-  },
-  {
-    id: 2,
-    text: 'опытные СПЕЦИАЛИСТЫ по всем направлениям',
-    icon: '/assets/img/icons/career/experience-1-1-1.svg'
-  },
-  {
-    id: 3,
-    text: 'более 50 выполненных ПРОЕКТОВ в РФ и Республике Беларусь',
-    icon: '/assets/img/icons/career/world-1-1-1.svg'
-  },
-  {
-    id: 4,
-    text: 'нас отличает АКТИВНАЯ жизненная позиция и командный дух',
-    icon: '/assets/img/icons/career/team-2-1-1.svg'
-  },
-  {
-    id: 5,
-    text: 'оснащение современной техникой и программным обеспечением',
-    icon: '/assets/img/icons/career/invention-1-1-1.svg'
-  },
-  {
-    id: 6,
-    text: 'ОТКРЫТЫ миру; делимся знаниями, опытом и ноу-хау',
-    icon: '/assets/img/icons/career/openmindness-2-1-1.svg'
-  }
-]
-
-const benefits = [
-  {
-    id: 1,
-    title: 'Расширенный социальный пакет',
-    description: 'Все сотрудники получают белую зарплату, полный социальный пакет, официальное трудоустройство и полис ДМС. А также участие в праздничных мероприятиях, корпоративный спорт и др.',
-    icon: '/assets/img/icons/career/salary-1.svg'
-  },
-  {
-    id: 2,
-    title: 'Корпоративный университет',
-    description: 'В ООО «Татбелэнергопроект» бережно хранят и передают профессиональные знания и опыт. Система наставничества и техническая учёба помогают обучаться новому и повышать квалификацию.',
-    icon: '/assets/img/icons/career/education-1.svg'
-  },
-  {
-    id: 3,
-    title: 'Корпоративный отдых и спорт',
-    description: 'Мы весело отмечаем день рождения компании, новый год и день энергетика, выезжаем на собственную базу отдыха, в Шерегеш, на Алтай. За счёт компании бегаем на лыжах, катаемся на велосипедах, плаваем, играем в волейбол и занимаемся йогой и пилатесом.',
-    icon: '/assets/img/icons/career/image-1.svg'
-  },
-  {
-    id: 4,
-    title: 'Лицензионное ПО и условия труда',
-    description: 'Мы предоставляем полностью лицензированные рабочие места и требуемые условия работы на объектах – все, что необходимо для качественного выполнения своей работы с максимальной пользой для компании.',
-    icon: '/assets/img/icons/career/award.svg'
-  },
-  {
-    id: 5,
-    title: 'Неограниченные возможности для роста и развития',
-    description: 'ООО «Татбелэнергопроект» предлагает возможности для саморазвития, профессионального и карьерного роста. Общество поддерживает непрерывное обучение и повышение квалификации персонала.',
-    icon: '/assets/img/icons/career/apps.svg'
-  },
-  {
-    id: 6,
-    title: 'Наставничество и поддержка профессионалов',
-    description: 'В компании действует система наставничества для молодых специалистов, дающая неограниченные возможности профессионального роста как самого наставника, так и новичка в профессии.',
-    icon: '/assets/img/icons/career/mentor-1.svg'
-  },
-  {
-    id: 7,
-    title: 'Сложные и интересные проекты',
-    description: 'ООО «Татбелэнергопроект» выполняет сложные проекты в области промышленного проектирования объектов энергетики – тепловые станции, источники тепла, объекты промышленных предприятий.',
-    icon: '/assets/img/icons/career/team-management-1.svg'
-  },
-  {
-    id: 8,
-    title: 'Командировки в России и за рубежом',
-    description: 'ООО «Татбелэнергопроект» выполняет проекты в Российской Федерации и Республике Беларусь. Общество имеет филиал в г. Казань. География проектов охватывает ведущие энергетические и промышленные предприятия.',
-    icon: '/assets/img/icons/career/business-trip-1.svg'
-  }
-]
-
-export const traditions = [
-  {
-    id: 1,
-    title: 'Веселиться на корпоративах',
-    image: '/assets/img/team.JPG'
-  },
-  {
-    id: 2,
-    title: 'Вместе не только работать',
-    image: '/assets/img/career2.webp'
-  },
-  {
-    id: 3,
-    title: 'Делать свою работу хорошо',
-    image: '/assets/img/team2.JPG'
-  },
-  {
-    id: 4,
-    title: 'Летать в продуктивные командировки',
-    image: '/assets/img/career.jpeg'
-  }
-]
+import { departments } from '../../../data/company'
+import { useScrollLine } from '../../../motion'
+import { vacancies, values, benefits, traditions } from '../../../data/career'
+import { Arrow, Crumbs, Photo, SectionHead, Todo, pad } from '../../ui'
 
 function CareerMain() {
+  const benefitsRef = useRef(null)
+  useScrollLine(benefitsRef, ':scope > li')
+
   return (
     <>
-      <section id="career_main">
-        <div className="container"></div>
-        <div className="career_main_bg">
-          <img src="/assets/img/team.JPG" alt="" />
-        </div>
-      </section>
-
-      <section id="career_get">
-        <div className="container">
-          <div className="breadcrump">
-            <Link to="/">Главная</Link>
-            <p>&gt;</p>
-            <Link to="/karera">Карьера</Link>
-          </div>
-          <div className="row">
-            <div className="col-lg-6">
-              <h2>ООО «Татбелэнергопроект» – это команда проектировщиков (инженеров, конструкторов), работающих над проектированием объектов энергетики: тепловых электрических станций, источников тепла и тепловых сетей, объектов общезаводского хозяйства крупных промышленных предприятий.</h2>
+      <section className="page-hero">
+        <div className="wrap">
+          <Crumbs items={[{ label: 'Карьера', to: '/karera' }]} />
+          <div className="career-hero">
+            <div className="career-hero__text">
+              <span className="cap cap--blue">Карьера</span>
+              <h1 className="h1">Работа в Татбелэнергопроекте</h1>
+              <p className="lead">
+                Мы проектируем электростанции, котельные и объекты промышленных предприятий в Беларуси и России. Ищем инженеров, которым интересны большие объекты и работа вместе с коллегами из других дисциплин.
+              </p>
+              <div className="btn-row">
+                <Link to="/karera/vakansii" className="btn btn--solid">Вакансии <Arrow /></Link>
+                <a href="#conditions" className="btn">Условия <Arrow /></a>
+              </div>
             </div>
-            <div className="col-lg-6 col-lg-end">
-              <p className="get_team">Присоединяйся к команде и развивайся вместе с опытными профессионалами в сфере энергетики!</p>
-            </div>
+            <Photo className="career-hero__photo" src="/assets/img/team.JPG" alt="Сотрудники Татбелэнергопроекта" caption="Сотрудники компании" />
           </div>
         </div>
       </section>
 
-      <section id="career_vacantion">
-        <div className="container">
-          <h2 className="big">Кто нам <span>нужен</span></h2>
-          <div className="vacantion_row">
-            {vacancies.map((vacancy) => (
-              <div key={vacancy.id} className={`vacantion_div ${vacancy.isCenter ? 'vacantion_div_center' : ''}`}>
-                <img src={vacancy.icon} alt={vacancy.title} />
-                <h4>{vacancy.title}</h4>
-                <p>{vacancy.description}</p>
-                <a href={vacancy.link} className="career_vacantion_a">
-                  <p>Подробнее</p>
-                  <img className="arrow" src={arrowRightIcon} alt="" />
-                </a>
-              </div>
+      <section className="sec">
+        <div className="wrap">
+          <SectionHead
+            index={1}
+            label="Где работать"
+            title="Девять отделов — девять направлений инженерной работы"
+            lead="Проектировщик в компании работает внутри своего отдела, а объект ведёт вместе с соседними разделами."
+          />
+          <ul className="dir-list">
+            {departments.map((d, i) => (
+              <li key={d.title}>
+                <span className="num">{pad(i + 1)}</span>
+                <div>
+                  <strong>{d.title}</strong>
+                  <span>{d.text}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <Photo className="about-photo wide-photo" src="/assets/img/career.jpeg" alt="" caption="Иллюстрация" />
+        </div>
+      </section>
+
+      <section className="sec sec--paper">
+        <div className="wrap">
+          <SectionHead
+            index={2}
+            label="Кого ищем"
+            title="Открытые вакансии"
+            aside={<Link to="/karera/vakansii" className="link-arrow">Все вакансии ({vacancies.length}) <Arrow /></Link>}
+          />
+          <div className="vac-list">
+            {vacancies.slice(0, 4).map((v, i) => (
+              <Link key={v.id} to={`/karera/vakansii#${v.id}`} className="people__row">
+                <span className="num">{pad(i + 1)}</span>
+                <strong>{v.title}</strong>
+                <span>{v.text}</span>
+              </Link>
             ))}
           </div>
-          <div className="btn_career_center">
-            <Link to="/karera/vakansii">все вакансии</Link>
-          </div>
         </div>
       </section>
 
-      <section id="career_value">
-        <div className="container">
-          <h2 className="big">Что мы <span>ценим</span> в сотрудниках</h2>
-          <div className="row">
-            {values.map((value) => (
-              <div key={value.id} className="col-lg-6">
-                <div className="career_value_div">
-                  <img src={value.icon} alt={value.title} />
-                  <h4>{value.title}</h4>
-                  <p>{value.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="who_we_career">
-        <div className="container">
-          <h2 className="big">Кто <span>мы</span> такие</h2>
-          <p>ООО «Татбелэнергопроект» — дочернее предприятие ООО ИЦ «Энергопрогресс», работающее с 2015 года в области промышленного проектирования объектов энергетики. Более 150 специалистов, из них более 95% — инженерно-технический персонал. Оснащены современной техникой и ПО для выполнения работ на условиях генерального подряда.</p>
-        </div>
-      </section>
-
-      <section id="who_we_career_green">
-        <div className="container">
-          <div className="row">
-            {stats.map((stat) => (
-              <div key={stat.id} className="col-lg-2">
-                <div className="who_we_career_div">
-                  <span>
-                    {stat.number && <h3>{stat.number}</h3>}
-                    {stat.icon && <img src={stat.icon} alt="" />}
-                  </span>
-                  <p>{stat.text}</p>
-                </div>
+      <section className="sec">
+        <div className="wrap">
+          <SectionHead index={3} label="Что ценим" title="Что важно в работе у нас" />
+          <div className="rows">
+            {values.map((v, i) => (
+              <div key={v.title} className="rows__item">
+                <span className="num">{pad(i + 1)}</span>
+                <h3 className="h3">{v.title}</h3>
+                <p>{v.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="what_you_get">
-        <div className="container">
-          <h2 className="big">Что мы <span>предлагаем</span></h2>
-          <div className="row">
-            {benefits.map((benefit) => (
-              <div key={benefit.id} className="col-lg-3">
-                <div className="what_you_get">
-                  <img src={benefit.icon} alt={benefit.title} />
-                  <h4>{benefit.title}</h4>
-                  <p>{benefit.description}</p>
+      <section className="sec sec--blue grid-bg" id="conditions">
+        <div className="wrap">
+          <SectionHead index={4} label="Условия" title="Что даёт компания" />
+          <ul className="benefits" ref={benefitsRef}>
+            {benefits.map((b, i) => (
+              <li key={b.title}>
+                <span className="num">{pad(i + 1)}</span>
+                <div>
+                  <h3 className="h3">{b.title}</h3>
+                  <p>{b.text}</p>
+                  {b.note && <Todo block>{b.note}</Todo>}
                 </div>
-              </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="sec" id="traditions">
+        <div className="wrap">
+          <SectionHead index={5} label="У нас принято" title="Не только работа" />
+          <div className="photo-pair">
+            {traditions.map((t) => (
+              <figure key={t.title}>
+                <Photo src={t.image} alt={t.caption} />
+                <h3 className="h3">{t.title}</h3>
+              </figure>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="swiper_career">
-        <div className="container">
-          <h2 className="big">у нас <span>принято</span></h2>
-          <Swiper
-            modules={[Navigation]}
-            navigation={{
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev'
-            }}
-            slidesPerView={1}
-            spaceBetween={30}
-            breakpoints={{
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 30
-              },
-              1024: {
-                slidesPerView: 1,
-                spaceBetween: 30
-              }
-            }}
-            className="swiper-career"
-          >
-            {traditions.map((tradition) => (
-              <SwiperSlide key={tradition.id}>
-                <div className="slider_career">
-                  <div className="slider_career_img">
-                    <img src={tradition.image} alt={tradition.title} />
-                  </div>
-                  <h4>{tradition.title}</h4>
-                </div>
-              </SwiperSlide>
-            ))}
-            <div className="swiper-navigation">
-              <div className="swiper-button-prev"></div>
-              <div className="swiper-button-next"></div>
-            </div>
-          </Swiper>
+      <section className="sec sec--yellow sec--tight">
+        <div className="wrap strip">
+          <p className="h3">Не нашли свою вакансию? Пришлите резюме — оно останется в резерве.</p>
+          <Link to="/karera/vakansii#apply" className="btn btn--solid">Как откликнуться <Arrow /></Link>
         </div>
       </section>
     </>
