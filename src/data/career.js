@@ -106,10 +106,12 @@ export const benefits = [
 // Пустые поля (null) выводятся как метки [УТОЧНИТЬ].
 export const bestEmployeesPeriod = null
 export const bestEmployees = [
-  { name: null, position: null, department: null, reason: null, photo: null },
-  { name: null, position: null, department: null, reason: null, photo: null },
-  { name: null, position: null, department: null, reason: null, photo: null },
-  { name: null, position: null, department: null, reason: null, photo: null }
+  { name: 'Дыбаль Е.В', position: 'Главный инженер проекта', department: null, reason: 'Модернизация Приморсокой ГРЭС', photo: null },
+  { name: 'Андросик И.В', position: 'Заведующий группой', department: null, reason: 'Модернизация Приморсокой ГРЭС', photo: null },
+  { name: 'Туманова Е.М', position: 'Заведующий группой ОТ', department: null, reason: 'Модернизация Приморсокой ГРЭС', photo: null },
+  { name: 'Таманович А.В', position: 'Заведующий группой ОС', department: null, reason: 'Модернизация Приморсокой ГРЭС', photo: null },
+  { name: 'Банифатов В.И', position: 'Главный конструктор ОЭСУ', department: null, reason: 'Модернизация Приморсокой ГРЭС', photo: null },
+  { name: 'Гладкий К.В', position: 'Главный технолог', department: null, reason: 'Модернизация Приморсокой ГРЭС', photo: null }
 ]
 
 export const traditions = [

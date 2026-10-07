@@ -6,7 +6,10 @@ const field = (value, todo) => value || <Todo>{todo}</Todo>
 
 function BestEmployeesSection() {
   if (!bestEmployees.length) return null
+
   const [first, ...rest] = bestEmployees
+  const side = rest.slice(0, 3)
+  const more = rest.slice(3)
 
   return (
     <section className="sec" id="best">
@@ -39,28 +42,55 @@ function BestEmployeesSection() {
             </div>
           </article>
 
-          <ul className="best__list">
-            {rest.map((p, i) => (
-              <li key={i} className="best__item">
-                <PhotoSlot className="best__thumb" src={p.photo} alt={p.name || 'Сотрудник компании'} mark={p.name ? undefined : ''} note="Фото" />
-                <div>
-                  <span className="num">{pad(i + 2)}</span>
-                  {p.name ? (
-                    <>
-                      <strong>{p.name}</strong>
-                      <span className="pos">{[p.position, p.department].filter(Boolean).join(' · ')}</span>
-                      <span className="why">{field(p.reason, 'за что отмечен')}</span>
-                    </>
-                  ) : (
-                    <>
-                      <strong>Сотрудник</strong>
-                      <span className="why"><Todo>ФИО, должность, за что отмечен</Todo></span>
-                    </>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
+          {side.length > 0 && (
+            <ul className="best__list">
+              {side.map((p, i) => (
+                <li key={p.name || i} className="best__item">
+                  <PhotoSlot className="best__thumb" src={p.photo} alt={p.name || 'Сотрудник компании'} mark={p.name ? undefined : ''} note="Фото" />
+                  <div>
+                    <span className="num">{pad(i + 2)}</span>
+                    {p.name ? (
+                      <>
+                        <strong>{p.name}</strong>
+                        <span className="pos">{[p.position, p.department].filter(Boolean).join(' · ')}</span>
+                        <span className="why">{field(p.reason, 'за что отмечен')}</span>
+                      </>
+                    ) : (
+                      <>
+                        <strong>Сотрудник</strong>
+                        <span className="why"><Todo>ФИО, должность, за что отмечен</Todo></span>
+                      </>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {more.length > 0 && (
+            <ul className="best__more">
+              {more.map((p, i) => (
+                <li key={p.name || i} className="best__card">
+                  <PhotoSlot className="best__card-photo" src={p.photo} alt={p.name || 'Сотрудник компании'} mark={p.name ? undefined : ''} note="Фото" />
+                  <div className="best__card-text">
+                    <span className="num">{pad(i + 5)}</span>
+                    {p.name ? (
+                      <>
+                        <strong>{p.name}</strong>
+                        <span className="pos">{[p.position, p.department].filter(Boolean).join(' · ')}</span>
+                        <span className="why">{field(p.reason, 'за что отмечен')}</span>
+                      </>
+                    ) : (
+                      <>
+                        <strong>Сотрудник</strong>
+                        <span className="why"><Todo>ФИО, должность, за что отмечен</Todo></span>
+                      </>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </section>

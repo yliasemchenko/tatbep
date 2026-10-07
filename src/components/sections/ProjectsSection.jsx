@@ -5,6 +5,7 @@ import { inkStyle, useInk } from '../../motion'
 import { Arrow, SectionHead, Todo, pad } from '../ui'
 
 const yearOf = (date) => (date.match(/\d{4}(–\d{4})?/) || [''])[0]
+const isMobile = () => typeof window !== 'undefined' && window.matchMedia('(max-width: 960px)').matches
 
 function ProjectFigure({ project }) {
   const [view, setView] = useState('photo')
@@ -44,6 +45,7 @@ function ProjectsSection() {
   const initial = featuredProjects.some((p) => p.id === fromUrl) ? fromUrl : featuredProjects[0].id
   const [activeId, setActiveId] = useState(initial)
   const [switched, setSwitched] = useState(false)
+  const startX = useRef(null)
 
   useEffect(() => {
     if (!featuredProjects.some((p) => p.id === fromUrl) || fromUrl === activeId) return
@@ -53,11 +55,26 @@ function ProjectsSection() {
   const listRef = useRef(null)
   const ink = useInk(listRef, '.featured__item.active', [activeId], 'y')
   const project = featuredProjects.find((p) => p.id === activeId)
+  const index = featuredProjects.findIndex((p) => p.id === activeId)
 
   const select = (id) => {
     if (id === activeId) return
     setSwitched(true)
     setActiveId(id)
+  }
+
+  const onPointerDown = (e) => {
+    if (!isMobile() || e.pointerType === 'mouse') return
+    if (e.target.closest('button, a')) return
+    startX.current = e.clientX
+  }
+  const onPointerUp = (e) => {
+    if (startX.current == null) return
+    const dx = e.clientX - startX.current
+    startX.current = null
+    if (Math.abs(dx) < 48) return
+    const next = index + (dx < 0 ? 1 : -1)
+    if (featuredProjects[next]) select(featuredProjects[next].id)
   }
 
   return (
@@ -88,7 +105,14 @@ function ProjectsSection() {
             <span className="featured__ink" aria-hidden="true" style={inkStyle(ink, 'y')} />
           </div>
 
-          <article className={`featured__panel${switched ? ' is-switch' : ''}`} role="tabpanel" key={project.id}>
+          <article
+            className={`featured__panel${switched ? ' is-switch' : ''}`}
+            role="tabpanel"
+            key={project.id}
+            onPointerDown={onPointerDown}
+            onPointerUp={onPointerUp}
+            onPointerCancel={() => { startX.current = null }}
+          >
             <ProjectFigure project={project} />
             <div className="featured__info">
               <h3 className="h3">{project.name}</h3>
